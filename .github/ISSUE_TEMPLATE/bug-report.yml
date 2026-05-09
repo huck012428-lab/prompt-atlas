@@ -1,0 +1,49 @@
+name: Bug report
+description: Report a bug, broken card, validation issue, or safety concern.
+title: "[bug] <short summary>"
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of bug
+      options:
+        - Card content is wrong / misleading
+        - Card violates safety policy (also add `safety` label)
+        - Validation script is wrong (false positive / false negative)
+        - Index generation is wrong
+        - Documentation issue
+        - Code of conduct concern (also add `conduct` label)
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: File or location
+      description: Path to the affected file (e.g. `prompts/rag/retrieval-relevance-evaluator.md`).
+    validations:
+      required: false
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What's wrong?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should happen instead?
+    validations:
+      required: false
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce (for script / validation bugs)
+      placeholder: |
+        1. Run `python scripts/validate.py`
+        2. Observe error: ...

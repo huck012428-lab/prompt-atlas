@@ -1,0 +1,75 @@
+name: New Prompt Card request
+description: Propose a new Prompt Card to add to the library.
+title: "[card] <direction>/<slug>: <title>"
+labels: ["new-card"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to propose a new card BEFORE writing one, or to
+        link a PR that adds one. If you have already authored the card,
+        you can also skip the issue and open a PR directly.
+
+  - type: dropdown
+    id: direction
+    attributes:
+      label: Direction
+      description: Which direction does this card belong to?
+      options:
+        - rag
+        - agent
+        - rlhf
+        - sft
+        - multimodal
+        - cot
+        - eval
+        - (none of these — see "vocabulary changes" below)
+    validations:
+      required: true
+
+  - type: input
+    id: slug
+    attributes:
+      label: Proposed slug
+      description: Lowercase, kebab-case. Will become `<direction>/<slug>` and the file path.
+      placeholder: e.g. citation-faithfulness-scorer
+    validations:
+      required: true
+
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose
+      description: What workflow stage does this card serve? Who would use it?
+      placeholder: |
+        e.g. "Used during RAG eval-set construction to flag citations whose
+        cited span doesn't actually support the claim."
+    validations:
+      required: true
+
+  - type: textarea
+    id: existing
+    attributes:
+      label: Why doesn't an existing card cover this?
+      description: Which existing cards did you consider, and why didn't they fit?
+    validations:
+      required: true
+
+  - type: textarea
+    id: vocab
+    attributes:
+      label: Vocabulary changes (if any)
+      description: |
+        If this card needs a new tag / audience / model label that doesn't
+        exist in `docs/SCHEMA.md`, list it here and justify the addition.
+        Leave blank if no new vocabulary is needed.
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: This card does NOT attempt to bypass safety, extract hidden chain-of-thought, or enable harmful behavior. I have read `docs/SAFETY.md`.
+          required: true
+        - label: Examples in this card use synthetic data only — no real personal data, credentials, or proprietary content.
+          required: true

@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build / dist
+build/
+dist/
+
+# Local secrets (should never be committed; defense in depth)
+.env
+.env.local
+*.pem
+*.key

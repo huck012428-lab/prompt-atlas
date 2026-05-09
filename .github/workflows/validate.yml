@@ -1,0 +1,33 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-cards:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Validate prompt cards
+        run: python scripts/validate.py
+
+      - name: Verify INDEX.md is up to date
+        run: |
+          python scripts/build_index.py
+          if ! git diff --exit-code INDEX.md; then
+            echo "::error::INDEX.md is stale. Run 'python scripts/build_index.py' locally and commit the result."
+            exit 1
+          fi
