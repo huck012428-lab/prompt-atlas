@@ -73,6 +73,27 @@ schema changes accumulate).
 Vocabulary additions: `code` direction; tags `code-review`,
 `test-generation`, `documentation`.
 
+#### Round-balance expansion (6 cards across 6 directions)
+- `code/code-translation` — translate code between languages with
+  literal / idiomatic / balanced strategies; flags behavioral
+  differences and untranslatable constructs.
+- `agent/clarification-asker` — front-door of agent loops: decide
+  proceed / clarify / out_of_scope on ambiguous goals; ask exactly
+  one high-value clarifying question.
+- `cot/step-back-prompting` — abstract a question into a principle
+  question, answer the principle, then apply back to the original.
+- `eval/rubric-generator` — generate a domain-specific scoring rubric
+  with concrete level-1/3/5 anchors and weighting recommendation.
+- `multimodal/document-layout-analyzer` — identify regions on a
+  document page (title / body / table / figure / caption / footer
+  etc.) with reading order and hierarchy.
+- `rlhf/refusal-calibration-probe` — diagnose whether a response is
+  appropriately calibrated to prompt safety: catches over_refusal
+  on benign prompts AND under_refusal on unsafe prompts.
+
+Per-direction now: rag 8, eval 8, agent 7, sft 6, code 6, cot 6,
+multimodal 6, rlhf 6. Total 53. All directions ≥6.
+
 #### Bilingual at-a-glance (`场景` blockquote)
 - Every card now opens with a single-line Chinese `> 🎯 **场景**：...`
   blockquote summarizing the use case. Aimed at non-English readers

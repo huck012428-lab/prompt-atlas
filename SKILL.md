@@ -1,6 +1,6 @@
 ---
 name: prompt-atlas
-description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. 47 cards across 8 directions — RAG, Agent, RLHF, SFT, Multimodal, Chain-of-Thought, Evaluation, Code. Triggers when the user asks for a prompt for retrieval scoring, multi-hop QA, query rewriting, HyDE, citation auditing, hallucination detection, chunk summarization, context compression, agent planning / tool-call schema, agent reflection, tool-call repair, plan-and-execute, trajectory memory compression, multi-agent sub-task delegation, pairwise preference labeling, pointwise reward scoring, constitutional critique-and-revise, best-of-N selection, red-team prompt generation, instruction augmentation, self-instruct, SFT data filtering, SFT response generation, multi-turn conversation generation, few-shot example selection, structured image captioning, visual question answering, VLM caption verification, OCR structured extraction, chart and table extraction, structured reasoning, least-to-most decomposition, self-consistency aggregation, verify-then-finalize, tree-of-thoughts, LLM-as-judge rubrics, reference-based judging, per-claim factuality, pointwise quality scoring, safety output classification, position-bias-aware pairwise judging, multi-turn dialogue judging, code review, test case generation, code explanation, code evaluation, or refactor suggestion. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
+description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. 53 cards across 8 directions — RAG, Agent, RLHF, SFT, Multimodal, Chain-of-Thought, Evaluation, Code. Triggers when the user asks for a prompt for retrieval scoring, multi-hop QA, query rewriting, HyDE, citation auditing, hallucination detection, chunk summarization, context compression, agent planning / tool-call schema, agent reflection, tool-call repair, plan-and-execute, trajectory memory compression, multi-agent sub-task delegation, pairwise preference labeling, pointwise reward scoring, constitutional critique-and-revise, best-of-N selection, red-team prompt generation, instruction augmentation, self-instruct, SFT data filtering, SFT response generation, multi-turn conversation generation, few-shot example selection, structured image captioning, visual question answering, VLM caption verification, OCR structured extraction, chart and table extraction, structured reasoning, least-to-most decomposition, self-consistency aggregation, verify-then-finalize, tree-of-thoughts, LLM-as-judge rubrics, reference-based judging, per-claim factuality, pointwise quality scoring, safety output classification, position-bias-aware pairwise judging, multi-turn dialogue judging, code review, test case generation, code explanation, code evaluation, or refactor suggestion. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
 ---
 
 # prompt-atlas
@@ -77,6 +77,7 @@ User describes...                                                               
 "step back and reflect on whether the trajectory is on track"                      → agent/self-critique-reflection
 "compress a long agent trajectory into structured memory before context overflow"  → agent/long-context-memory-summarizer
 "split a complex task across specialized workers / agents (multi-agent)"           → agent/sub-task-delegator
+"decide whether a goal is too ambiguous to act on; ask one good clarifying question" → agent/clarification-asker
 ```
 
 ### RLHF
@@ -89,6 +90,7 @@ User describes...                                                               
 "critique a response against a constitution and produce a revised version (CAI)"   → rlhf/constitutional-critique-revise
 "pick the best of N candidate responses (rank + select)"                           → rlhf/best-of-n-selector
 "generate adversarial probe prompts for safety evaluation (defensive only)"        → rlhf/red-team-prompt-generator
+"diagnose model refusal calibration (over-refusal vs under-refusal vs correct)"    → rlhf/refusal-calibration-probe
 ```
 
 ### SFT
@@ -114,6 +116,7 @@ User describes...                                                               
 "answer a question about an image with grounding region + confidence"              → multimodal/vqa-with-confidence
 "extract typed fields from a document image (receipt / invoice / form / ID)"       → multimodal/ocr-structured-extraction
 "extract data from a chart / plot / table image"                                   → multimodal/chart-table-extractor
+"analyze a document page's layout (title, body, tables, figures, reading order)"   → multimodal/document-layout-analyzer
 ```
 
 ### Chain-of-Thought
@@ -126,6 +129,7 @@ User describes...                                                               
 "aggregate N independently-sampled reasoning paths into a consensus answer"        → cot/self-consistency-aggregator
 "draft + verify before committing to a final answer (per-check verdicts)"          → cot/verify-then-finalize
 "explore multiple approaches in parallel, evaluate, prune (tree-of-thoughts)"      → cot/tree-of-thoughts
+"abstract the question into a principle first, then apply (step-back prompting)"   → cot/step-back-prompting
 ```
 
 ### Evaluation
@@ -140,6 +144,7 @@ User describes...                                                               
 "classify a single output along a harm taxonomy (allow / review / block)"          → eval/safety-output-classifier
 "pairwise judge with explicit position-bias detection (two-call protocol)"         → eval/pairwise-judge-with-position-bias-probe
 "judge a multi-turn dialogue (per-turn + conversation-level scoring)"              → eval/multi-turn-dialogue-judge
+"generate a domain-specific rubric with concrete level anchors (1-5)"              → eval/rubric-generator
 ```
 
 ### Code
@@ -152,6 +157,7 @@ User describes...                                                               
 "explain code at a specific audience level (junior dev / PM / domain expert)"      → code/code-explanation-generator
 "judge whether candidate code fulfills a task (with optional gold + tests)"        → code/code-eval-judge
 "suggest concrete refactors with rationale and impact (single goal per call)"      → code/refactor-suggestion
+"translate code from one language to another (literal / idiomatic / balanced)"     → code/code-translation
 ```
 
 For tasks not covered above:
@@ -237,7 +243,7 @@ content.
 
 ```
 prompt-atlas/
-├── prompts/<direction>/<slug>.md     ← the cards (47 total)
+├── prompts/<direction>/<slug>.md     ← the cards (53 total)
 ├── templates/prompt-card.md          ← canonical template
 ├── docs/SCHEMA.md                    ← frontmatter + tag vocabulary
 ├── docs/SAFETY.md                    ← policy

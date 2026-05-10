@@ -74,6 +74,8 @@ Maps a goal to the card to use. New here? See
 | Label A vs B preference (HHH) · 给 A/B 两个回答打偏好标签 | [`rlhf/pairwise-preference-labeler`](prompts/rlhf/pairwise-preference-labeler.md) |
 | Pairwise judge with position-bias detection (two-call protocol) · 带位置偏置检测的 pairwise judge（双向调用） | [`eval/pairwise-judge-with-position-bias-probe`](prompts/eval/pairwise-judge-with-position-bias-probe.md) |
 | Judge a multi-turn dialogue (per-turn + conversation-level) · 多轮对话评估 | [`eval/multi-turn-dialogue-judge`](prompts/eval/multi-turn-dialogue-judge.md) |
+| Generate a domain-specific rubric with level anchors · 给具体任务自动生成定制化评分 rubric | [`eval/rubric-generator`](prompts/eval/rubric-generator.md) |
+| Diagnose refusal calibration (over / under / correct) · 诊断模型拒绝是否校准 | [`rlhf/refusal-calibration-probe`](prompts/rlhf/refusal-calibration-probe.md) |
 
 ### RAG · 检索增强
 
@@ -98,6 +100,7 @@ Maps a goal to the card to use. New here? See
 | Reflect on whether the trajectory is on track · 反思 agent 是否在正轨 | [`agent/self-critique-reflection`](prompts/agent/self-critique-reflection.md) |
 | Compress a long agent trajectory into memory · 把长 trajectory 压缩成 memory | [`agent/long-context-memory-summarizer`](prompts/agent/long-context-memory-summarizer.md) |
 | Split a complex task across multiple specialized workers · 把复杂任务派给多个专精 agent | [`agent/sub-task-delegator`](prompts/agent/sub-task-delegator.md) |
+| Decide whether a goal needs clarification, ask one good question · 判断是否要问澄清问题，问一个好问题 | [`agent/clarification-asker`](prompts/agent/clarification-asker.md) |
 
 ### Generate / filter training data · 训练数据生成与过滤
 
@@ -122,6 +125,7 @@ Maps a goal to the card to use. New here? See
 | Answer a question about an image · 视觉问答 + grounding + 置信度 | [`multimodal/vqa-with-confidence`](prompts/multimodal/vqa-with-confidence.md) |
 | Extract typed fields from a document image · 从文档图片抽取结构化字段 | [`multimodal/ocr-structured-extraction`](prompts/multimodal/ocr-structured-extraction.md) |
 | Extract data from a chart / plot / table image · 从图表或表格图片抽数据 | [`multimodal/chart-table-extractor`](prompts/multimodal/chart-table-extractor.md) |
+| Analyze a document page's layout (title / body / tables / figures) · 分析文档页面版式结构 | [`multimodal/document-layout-analyzer`](prompts/multimodal/document-layout-analyzer.md) |
 
 ### Improve reasoning quality · 提升推理质量
 
@@ -132,6 +136,7 @@ Maps a goal to the card to use. New here? See
 | Aggregate N sampled paths into a consensus answer · 把 N 条采样路径聚合成共识答案 | [`cot/self-consistency-aggregator`](prompts/cot/self-consistency-aggregator.md) |
 | Draft + verify before committing to a final answer · 先 draft 再 verify 再交答案 | [`cot/verify-then-finalize`](prompts/cot/verify-then-finalize.md) |
 | Explore multiple branches in parallel and prune (tree-of-thoughts) · 多分支并行探索 + 剪枝 | [`cot/tree-of-thoughts`](prompts/cot/tree-of-thoughts.md) |
+| Abstract the question into a principle first, then apply (step-back) · 先抽象到原理再代入具体题 | [`cot/step-back-prompting`](prompts/cot/step-back-prompting.md) |
 
 ### Work with code · 处理代码
 
@@ -142,6 +147,7 @@ Maps a goal to the card to use. New here? See
 | Explain code at a specific audience level · 按受众层级解释代码 | [`code/code-explanation-generator`](prompts/code/code-explanation-generator.md) |
 | Judge whether candidate code fulfills a task · 评估候选代码是否完成任务 | [`code/code-eval-judge`](prompts/code/code-eval-judge.md) |
 | Suggest concrete refactors with rationale · 提结构化重构建议 | [`code/refactor-suggestion`](prompts/code/refactor-suggestion.md) |
+| Translate code from one language to another · 跨语言代码翻译（含 idiom 控制） | [`code/code-translation`](prompts/code/code-translation.md) |
 
 ## How to use it / 如何使用
 
@@ -269,12 +275,12 @@ clarity.
 ## Status / 当前状态
 
 **v0.1.0** — first public release with 32 Prompt Cards. Library has
-since grown to **47 Prompt Cards across all 7 directions** (post-v0.1
+since grown to **53 Prompt Cards across all 7 directions** (post-v0.1
 additions tracked in [`CHANGELOG.md`](docs/CHANGELOG.md)).
 See [`ROADMAP.md`](docs/ROADMAP.md) for what's planned next. Pull
 requests welcome.
 
 **v0.1.0** —— 首个公开版本，32 张 Prompt Card。后续已扩到
-**47 张，覆盖 8 个方向**（v0.1 之后的新卡见
+**53 张，覆盖 8 个方向**（v0.1 之后的新卡见
 [`CHANGELOG.md`](docs/CHANGELOG.md)）。后续计划见
 [`ROADMAP.md`](docs/ROADMAP.md)，欢迎 PR。
