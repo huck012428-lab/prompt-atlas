@@ -8,7 +8,55 @@ the **repository** level. Individual Prompt Cards carry their own
 
 ## [Unreleased]
 
-Nothing yet.
+Post-v0.1.0 polish + expansion. Will become v0.1.1 (or v0.2.0 if breaking
+schema changes accumulate).
+
+### Added
+
+#### Beginner-friendly experience
+- `docs/QUICKSTART.md` — 5-minute walkthrough for non-technical users
+  (covers what `{{variable}}` means, what JSON output means, where to
+  find the right card). Bilingual.
+- README "I want to..." section — 38 user-facing goals mapped to
+  exact card paths, grouped by intent.
+- `## Quick Use` section is now a required body section on every
+  card. Three lines (`Use when` / `Fill in` / `You'll get`) in plain
+  English. Required-section list grew from 6 to 7; `validate.py`
+  enforces it.
+- `INDEX.md` "Use when" column auto-extracted from each card's
+  Quick Use line.
+
+#### New Prompt Cards (6)
+- `rag/chunk-summarizer-for-retrieval` — produce search-friendly
+  summaries of long document chunks for retrieval indexing.
+- `agent/sub-task-delegator` — multi-agent foundation: split a
+  complex task across specialized workers with explicit input/output
+  contracts and dependency edges.
+- `rlhf/red-team-prompt-generator` — defensive safety probe
+  generator (refuses sexual_minors category outright; embeds
+  expected refusal posture in each probe).
+- `multimodal/chart-table-extractor` — extract structured data from
+  chart, plot, and table images with per-data-point confidence.
+- `cot/tree-of-thoughts` — explore multiple distinct reasoning
+  branches, evaluate, prune.
+- `eval/pairwise-judge-with-position-bias-probe` — pairwise judge
+  with explicit two-call position-bias detection protocol.
+
+#### Repository organization
+- Root directory tidied: `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md`
+  moved to `.github/` (GitHub auto-detects from there);
+  `CHANGELOG.md` and `ROADMAP.md` moved to `docs/`. Root went from
+  11 markdown files to 5.
+
+### Changed
+
+- `SKILL.md` routing tree expanded from 28 to 38 entries.
+- `templates/prompt-card.md` updated with `## Quick Use` template.
+- `CLAUDE.md` and `.github/CONTRIBUTING.md` updated to describe the
+  Quick Use quality bar.
+- `scripts/build_index.py` "Use when" extraction now reads the
+  `**Use when:**` line from `## Quick Use` (cleaner than parsing
+  Purpose).
 
 ## [0.1.0] — 2026-05-10
 

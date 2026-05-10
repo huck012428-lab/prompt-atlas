@@ -1,11 +1,11 @@
 ---
 name: prompt-atlas
-description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. 28 cards across 7 directions — RAG, Agent, RLHF, SFT, Multimodal, Chain-of-Thought, Evaluation. Triggers when the user asks for a prompt for retrieval scoring, multi-hop QA, query rewriting, HyDE, citation auditing, hallucination detection, agent planning / tool-call schema, agent reflection, tool-call repair, plan-and-execute, trajectory memory compression, pairwise preference labeling, pointwise reward scoring, constitutional critique-and-revise, instruction set augmentation, self-instruct, SFT data filtering, structured image captioning, visual question answering, VLM caption verification, structured reasoning, least-to-most decomposition, self-consistency aggregation, LLM-as-judge rubrics, reference-based judging, per-claim factuality, pointwise quality scoring, or safety output classification. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
+description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. 38 cards across 7 directions — RAG, Agent, RLHF, SFT, Multimodal, Chain-of-Thought, Evaluation. Triggers when the user asks for a prompt for retrieval scoring, multi-hop QA, query rewriting, HyDE, citation auditing, hallucination detection, chunk summarization for retrieval, agent planning / tool-call schema, agent reflection, tool-call repair, plan-and-execute, trajectory memory compression, multi-agent sub-task delegation, pairwise preference labeling, pointwise reward scoring, constitutional critique-and-revise, best-of-N selection, red-team prompt generation, instruction set augmentation, self-instruct, SFT data filtering, SFT response generation, structured image captioning, visual question answering, VLM caption verification, OCR structured extraction, chart and table extraction, structured reasoning, least-to-most decomposition, self-consistency aggregation, verify-then-finalize, tree-of-thoughts, LLM-as-judge rubrics, reference-based judging, per-claim factuality, pointwise quality scoring, safety output classification, or position-bias-aware pairwise judging. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
 ---
 
 # prompt-atlas
 
-A curated library of 28 reusable Prompt Cards organized by technical
+A curated library of 38 reusable Prompt Cards organized by technical
 direction. Each card carries metadata, variables, examples, failure
 modes, and tuning notes — they are work assets, not snippets, and each
 explicitly states when to use a sibling card instead.
@@ -18,20 +18,24 @@ under:
 
 - **RAG**: retrieval scoring, multi-hop eval synthesis, query
   rewriting, HyDE-style hypothetical answers, citation faithfulness,
-  answer hallucination detection.
+  answer hallucination detection, chunk summarization for retrieval.
 - **Agent**: ReAct planning, plan-and-execute, tool-call repair,
-  trajectory reflection, long-context memory compression.
+  trajectory reflection, long-context memory compression, multi-agent
+  sub-task delegation.
 - **RLHF**: pairwise preference labeling, pointwise reward scoring,
-  constitutional critique-and-revise.
+  constitutional critique-and-revise, best-of-N selection, defensive
+  red-team prompt generation.
 - **SFT**: instruction-set augmentation, self-instruct generation,
-  (instruction, response) quality filtering.
+  (instruction, response) quality filtering, SFT response generation.
 - **Multimodal**: structured image captioning, VLM caption
-  verification, visual question answering with grounding.
+  verification, visual question answering with grounding, OCR
+  structured extraction, chart and table extraction.
 - **Chain-of-Thought**: structured reasoning with rationale summary,
-  least-to-most decomposition, self-consistency aggregation.
+  least-to-most decomposition, self-consistency aggregation, verify-
+  then-finalize, tree-of-thoughts.
 - **Evaluation**: LLM-as-judge rubrics, reference-based judging,
   per-claim factuality, pointwise quality scoring, safety output
-  classification.
+  classification, position-bias-aware pairwise judging.
 
 Do **not** invoke for: jailbreaks, safety-bypass prompts, or attempts
 to extract proprietary internal reasoning traces. See
@@ -55,6 +59,7 @@ User describes...                                                               
 "generate a hypothetical answer to embed as a search query (HyDE)"                 → rag/hyde-hypothetical-answer-generator
 "audit whether a cited span actually supports the claim it was attached to"        → rag/citation-faithfulness-scorer
 "detect hallucinations in a RAG answer (per-claim grounding against context)"      → rag/answer-grounding-checker
+"summarize a long document chunk for retrieval indexing"                           → rag/chunk-summarizer-for-retrieval
 ```
 
 ### Agent
@@ -67,6 +72,7 @@ User describes...                                                               
 "fix a malformed tool call given the validation error message"                     → agent/tool-call-repair
 "step back and reflect on whether the trajectory is on track"                      → agent/self-critique-reflection
 "compress a long agent trajectory into structured memory before context overflow"  → agent/long-context-memory-summarizer
+"split a complex task across specialized workers / agents (multi-agent)"           → agent/sub-task-delegator
 ```
 
 ### RLHF
@@ -77,6 +83,8 @@ User describes...                                                               
 "label A vs B preference (HHH dimensions) for reward model data"                   → rlhf/pairwise-preference-labeler
 "produce a single-response scalar reward signal (no pair available)"               → rlhf/pointwise-reward-scorer
 "critique a response against a constitution and produce a revised version (CAI)"   → rlhf/constitutional-critique-revise
+"pick the best of N candidate responses (rank + select)"                           → rlhf/best-of-n-selector
+"generate adversarial probe prompts for safety evaluation (defensive only)"        → rlhf/red-team-prompt-generator
 ```
 
 ### SFT
@@ -87,6 +95,7 @@ User describes...                                                               
 "rewrite ONE instruction into N diverse variants (same task)"                      → sft/instruction-variant-expander
 "generate NEW instructions in the same task family as seed examples"               → sft/self-instruct-from-seed
 "filter (instruction, response) SFT pairs by quality before training"              → sft/data-quality-filter
+"generate the response half of an SFT pair given an instruction"                   → sft/response-generator
 ```
 
 ### Multimodal
@@ -97,6 +106,8 @@ User describes...                                                               
 "verify whether a candidate caption matches the image (per-claim audit)"           → multimodal/vlm-image-description-verifier
 "generate a structured caption (scene, objects, action, salient text)"             → multimodal/structured-caption-generator
 "answer a question about an image with grounding region + confidence"              → multimodal/vqa-with-confidence
+"extract typed fields from a document image (receipt / invoice / form / ID)"       → multimodal/ocr-structured-extraction
+"extract data from a chart / plot / table image"                                   → multimodal/chart-table-extractor
 ```
 
 ### Chain-of-Thought
@@ -107,6 +118,8 @@ User describes...                                                               
 "single-pass structured reasoning with sub-steps and a visible rationale"          → cot/structured-reasoning-with-rationale-summary
 "decompose a complex compositional problem into easier sub-problems in order"      → cot/least-to-most-decomposition
 "aggregate N independently-sampled reasoning paths into a consensus answer"        → cot/self-consistency-aggregator
+"draft + verify before committing to a final answer (per-check verdicts)"          → cot/verify-then-finalize
+"explore multiple approaches in parallel, evaluate, prune (tree-of-thoughts)"      → cot/tree-of-thoughts
 ```
 
 ### Evaluation
@@ -119,6 +132,7 @@ User describes...                                                               
 "decompose an output into atomic claims and label each true/false/unverifiable"    → eval/per-claim-factuality-judge
 "score one output on custom dimensions with self-reported confidence"              → eval/pointwise-quality-scorer
 "classify a single output along a harm taxonomy (allow / review / block)"          → eval/safety-output-classifier
+"pairwise judge with explicit position-bias detection (two-call protocol)"         → eval/pairwise-judge-with-position-bias-probe
 ```
 
 For tasks not covered above:
@@ -204,7 +218,7 @@ content.
 
 ```
 prompt-atlas/
-├── prompts/<direction>/<slug>.md     ← the cards (28 total)
+├── prompts/<direction>/<slug>.md     ← the cards (38 total)
 ├── templates/prompt-card.md          ← canonical template
 ├── docs/SCHEMA.md                    ← frontmatter + tag vocabulary
 ├── docs/SAFETY.md                    ← policy

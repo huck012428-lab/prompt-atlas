@@ -66,6 +66,7 @@ Maps a goal to the card to use. New here? See
 | Classify an AI output for safety harms · 输出安全分类（allow/review/block） | [`eval/safety-output-classifier`](prompts/eval/safety-output-classifier.md) |
 | Pick the best of N AI responses · 从 N 个回答里选最好的 | [`rlhf/best-of-n-selector`](prompts/rlhf/best-of-n-selector.md) |
 | Label A vs B preference (HHH) · 给 A/B 两个回答打偏好标签 | [`rlhf/pairwise-preference-labeler`](prompts/rlhf/pairwise-preference-labeler.md) |
+| Pairwise judge with position-bias detection (two-call protocol) · 带位置偏置检测的 pairwise judge（双向调用） | [`eval/pairwise-judge-with-position-bias-probe`](prompts/eval/pairwise-judge-with-position-bias-probe.md) |
 
 ### RAG · 检索增强
 
@@ -77,6 +78,7 @@ Maps a goal to the card to use. New here? See
 | Generate hypothetical answer for HyDE retrieval · HyDE 假答生成 | [`rag/hyde-hypothetical-answer-generator`](prompts/rag/hyde-hypothetical-answer-generator.md) |
 | Audit whether a citation actually supports a claim · 审计 citation 是否真的支持 claim | [`rag/citation-faithfulness-scorer`](prompts/rag/citation-faithfulness-scorer.md) |
 | Detect hallucinations in a RAG answer · 检测 RAG 答案的幻觉 | [`rag/answer-grounding-checker`](prompts/rag/answer-grounding-checker.md) |
+| Summarize a long document chunk for retrieval indexing · 给长文档块产 search-friendly summary | [`rag/chunk-summarizer-for-retrieval`](prompts/rag/chunk-summarizer-for-retrieval.md) |
 
 ### Build / debug an agent · 搭建和调试 Agent
 
@@ -87,6 +89,7 @@ Maps a goal to the card to use. New here? See
 | Fix a malformed tool call from a validation error · 修复格式错误的 tool call | [`agent/tool-call-repair`](prompts/agent/tool-call-repair.md) |
 | Reflect on whether the trajectory is on track · 反思 agent 是否在正轨 | [`agent/self-critique-reflection`](prompts/agent/self-critique-reflection.md) |
 | Compress a long agent trajectory into memory · 把长 trajectory 压缩成 memory | [`agent/long-context-memory-summarizer`](prompts/agent/long-context-memory-summarizer.md) |
+| Split a complex task across multiple specialized workers · 把复杂任务派给多个专精 agent | [`agent/sub-task-delegator`](prompts/agent/sub-task-delegator.md) |
 
 ### Generate / filter training data · 训练数据生成与过滤
 
@@ -98,6 +101,7 @@ Maps a goal to the card to use. New here? See
 | Filter SFT pairs by quality (keep / review / drop) · 按质量过滤 SFT 数据 | [`sft/data-quality-filter`](prompts/sft/data-quality-filter.md) |
 | Produce scalar reward for one response · 给单回答打 reward 分 | [`rlhf/pointwise-reward-scorer`](prompts/rlhf/pointwise-reward-scorer.md) |
 | Critique a response against a constitution and revise · 按 constitution 批评 + 重写 | [`rlhf/constitutional-critique-revise`](prompts/rlhf/constitutional-critique-revise.md) |
+| Generate adversarial probes for safety evaluation (defensive) · 生成防御性安全评估探针 | [`rlhf/red-team-prompt-generator`](prompts/rlhf/red-team-prompt-generator.md) |
 
 ### Work with images · 处理图像
 
@@ -107,6 +111,7 @@ Maps a goal to the card to use. New here? See
 | Verify a caption against the actual image · 核对 caption 与图像 | [`multimodal/vlm-image-description-verifier`](prompts/multimodal/vlm-image-description-verifier.md) |
 | Answer a question about an image · 视觉问答 + grounding + 置信度 | [`multimodal/vqa-with-confidence`](prompts/multimodal/vqa-with-confidence.md) |
 | Extract typed fields from a document image · 从文档图片抽取结构化字段 | [`multimodal/ocr-structured-extraction`](prompts/multimodal/ocr-structured-extraction.md) |
+| Extract data from a chart / plot / table image · 从图表或表格图片抽数据 | [`multimodal/chart-table-extractor`](prompts/multimodal/chart-table-extractor.md) |
 
 ### Improve reasoning quality · 提升推理质量
 
@@ -116,6 +121,7 @@ Maps a goal to the card to use. New here? See
 | Decompose a complex problem into easier sub-problems · 把复杂问题拆成更简单的子问题 | [`cot/least-to-most-decomposition`](prompts/cot/least-to-most-decomposition.md) |
 | Aggregate N sampled paths into a consensus answer · 把 N 条采样路径聚合成共识答案 | [`cot/self-consistency-aggregator`](prompts/cot/self-consistency-aggregator.md) |
 | Draft + verify before committing to a final answer · 先 draft 再 verify 再交答案 | [`cot/verify-then-finalize`](prompts/cot/verify-then-finalize.md) |
+| Explore multiple branches in parallel and prune (tree-of-thoughts) · 多分支并行探索 + 剪枝 | [`cot/tree-of-thoughts`](prompts/cot/tree-of-thoughts.md) |
 
 ## How to use it / 如何使用
 
@@ -242,10 +248,13 @@ clarity.
 
 ## Status / 当前状态
 
-**v0.1.0** — first public release. 32 Prompt Cards across all 7
-directions. See [`CHANGELOG.md`](docs/CHANGELOG.md) for details and
-[`ROADMAP.md`](docs/ROADMAP.md) for what's next. Pull requests welcome.
+**v0.1.0** — first public release with 32 Prompt Cards. Library has
+since grown to **38 Prompt Cards across all 7 directions** (post-v0.1
+additions tracked in [`CHANGELOG.md`](docs/CHANGELOG.md)).
+See [`ROADMAP.md`](docs/ROADMAP.md) for what's planned next. Pull
+requests welcome.
 
-**v0.1.0** —— 首个公开版本。32 张 Prompt Card，覆盖全部 7 个方向。
-变更详见 [`CHANGELOG.md`](docs/CHANGELOG.md)，后续计划见
+**v0.1.0** —— 首个公开版本，32 张 Prompt Card。后续已扩到
+**38 张，覆盖全部 7 个方向**（v0.1 之后的新卡见
+[`CHANGELOG.md`](docs/CHANGELOG.md)）。后续计划见
 [`ROADMAP.md`](docs/ROADMAP.md)，欢迎 PR。
