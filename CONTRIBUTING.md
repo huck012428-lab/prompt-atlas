@@ -6,7 +6,7 @@ how validation works, and what we will not accept.
 ## Quickstart
 
 ```bash
-git clone https://github.com/<your-org>/prompt-atlas
+git clone https://github.com/huck012428-lab/prompt-atlas
 cd prompt-atlas
 pip install -r scripts/requirements.txt
 

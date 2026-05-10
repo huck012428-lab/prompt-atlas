@@ -51,7 +51,7 @@ Install this repository as a skill so Claude Code can route user
 intents to the right card directly:
 
 ```bash
-git clone https://github.com/<your-org>/prompt-atlas ~/.claude/skills/prompt-atlas
+git clone https://github.com/huck012428-lab/prompt-atlas ~/.claude/skills/prompt-atlas
 ```
 
 Then in Claude Code:
