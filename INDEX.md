@@ -8,70 +8,70 @@
 
 ### RAG (`rag`)
 
-| Card | Status | Tags | Audience |
-|------|--------|------|----------|
-| [Answer Grounding Checker (hallucination detector)](prompts/rag/answer-grounding-checker.md) | `stable` | `grounding`, `factuality`, `scoring`, `structured-output`, `eval-set` | `eval-team`, `llm-trainer`, `ai-pm`, `app-builder` |
-| [Citation Faithfulness Scorer](prompts/rag/citation-faithfulness-scorer.md) | `stable` | `citation`, `factuality`, `scoring`, `grounding`, `structured-output` | `eval-team`, `llm-trainer`, `ai-pm` |
-| [HyDE — Hypothetical Answer Generator for Retrieval](prompts/rag/hyde-hypothetical-answer-generator.md) | `experimental` | `retrieval`, `query-rewriting`, `generation`, `synthesis` | `prompt-engineer`, `app-builder`, `llm-trainer` |
-| [Multi-hop RAG Eval Question Synthesizer](prompts/rag/multihop-eval-synthesizer.md) | `experimental` | `multi-hop`, `synthesis`, `eval-set`, `generation` | `llm-trainer`, `eval-team` |
-| [Query Rewriting and Decomposition for Retrieval](prompts/rag/query-rewriting-decomposition.md) | `stable` | `query-rewriting`, `retrieval`, `decomposition`, `structured-output` | `prompt-engineer`, `app-builder`, `ai-pm` |
-| [Retrieval Relevance Evaluator](prompts/rag/retrieval-relevance-evaluator.md) | `stable` | `retrieval`, `scoring`, `eval-set`, `grounding` | `llm-trainer`, `eval-team`, `ai-pm` |
+| Card | Use when | Status | Tags |
+|------|----------|--------|------|
+| [Answer Grounding Checker (hallucination detector)](prompts/rag/answer-grounding-checker.md) | Decompose a RAG answer into atomic claims and label each one as supported, unsupported (i.e. hallucinated), or contradicted relative to the retrieved context. | `stable` | `grounding`, `factuality`, `scoring`, `structured-output`, `eval-set` |
+| [Citation Faithfulness Scorer](prompts/rag/citation-faithfulness-scorer.md) | For a single (claim, cited_span) pair, decide whether the cited span actually supports the claim — fully, partially, or not at all. | `stable` | `citation`, `factuality`, `scoring`, `grounding`, `structured-output` |
+| [HyDE — Hypothetical Answer Generator for Retrieval](prompts/rag/hyde-hypothetical-answer-generator.md) | Generate a short, plausible hypothetical answer to a query. | `experimental` | `retrieval`, `query-rewriting`, `generation`, `synthesis` |
+| [Multi-hop RAG Eval Question Synthesizer](prompts/rag/multihop-eval-synthesizer.md) | Generate a multi-hop evaluation question that *requires* combining information from two different passages — neither passage alone is sufficient to answer. | `experimental` | `multi-hop`, `synthesis`, `eval-set`, `generation` |
+| [Query Rewriting and Decomposition for Retrieval](prompts/rag/query-rewriting-decomposition.md) | Rewrite a single user query into a small set of focused sub-queries that together are more likely to retrieve all relevant context for the original ask. | `stable` | `query-rewriting`, `retrieval`, `decomposition`, `structured-output` |
+| [Retrieval Relevance Evaluator](prompts/rag/retrieval-relevance-evaluator.md) | Score whether a single retrieved passage is relevant to a query, with a short rationale. | `stable` | `retrieval`, `scoring`, `eval-set`, `grounding` |
 
 ### Agent (`agent`)
 
-| Card | Status | Tags | Audience |
-|------|--------|------|----------|
-| [Long-Context Trajectory Memory Summarizer](prompts/agent/long-context-memory-summarizer.md) | `stable` | `memory`, `generation`, `structured-output`, `decomposition` | `prompt-engineer`, `app-builder`, `llm-trainer` |
-| [Plan-and-Execute Upfront Planner](prompts/agent/plan-and-execute-planner.md) | `stable` | `planning`, `decomposition`, `structured-output` | `prompt-engineer`, `app-builder`, `ai-pm` |
-| [ReAct Planner with Strict Tool Call Schema](prompts/agent/react-planner-with-tool-schema.md) | `stable` | `planning`, `tool-use`, `react`, `structured-output`, `decomposition` | `prompt-engineer`, `app-builder`, `ai-pm` |
-| [Self-Critique Reflection Step for Agents](prompts/agent/self-critique-reflection.md) | `stable` | `reflection`, `self-check`, `planning`, `structured-output` | `prompt-engineer`, `app-builder`, `ai-pm` |
-| [Tool-Call Repair from Validation Error](prompts/agent/tool-call-repair.md) | `stable` | `tool-use`, `structured-output`, `extraction` | `prompt-engineer`, `app-builder` |
+| Card | Use when | Status | Tags |
+|------|----------|--------|------|
+| [Long-Context Trajectory Memory Summarizer](prompts/agent/long-context-memory-summarizer.md) | Compress a long agent trajectory into a structured memory record that preserves the facts, decisions, and unresolved questions needed to keep making progress toward `current_obj... | `stable` | `memory`, `generation`, `structured-output`, `decomposition` |
+| [Plan-and-Execute Upfront Planner](prompts/agent/plan-and-execute-planner.md) | Produce a complete multi-step plan upfront, before any tool calls, given a user goal and a tool catalog. | `stable` | `planning`, `decomposition`, `structured-output` |
+| [ReAct Planner with Strict Tool Call Schema](prompts/agent/react-planner-with-tool-schema.md) | Drive a ReAct-style agent loop where each step emits a single visible "reasoning_summary", then either a tool call (with strict JSON arguments matching the tool's schema) or a f... | `stable` | `planning`, `tool-use`, `react`, `structured-output`, `decomposition` |
+| [Self-Critique Reflection Step for Agents](prompts/agent/self-critique-reflection.md) | Insert a structured reflection step into an agent loop after every N actions or after a tool failure. | `stable` | `reflection`, `self-check`, `planning`, `structured-output` |
+| [Tool-Call Repair from Validation Error](prompts/agent/tool-call-repair.md) | Take a malformed tool call (schema validation failure, type mismatch, missing required field) plus the error message, and emit a corrected call that satisfies the tool's paramet... | `stable` | `tool-use`, `structured-output`, `extraction` |
 
 ### RLHF (`rlhf`)
 
-| Card | Status | Tags | Audience |
-|------|--------|------|----------|
-| [Best-of-N Response Selector](prompts/rlhf/best-of-n-selector.md) | `stable` | `ranking`, `scoring`, `helpfulness`, `harmlessness`, `structured-output` | `rlhf-team`, `app-builder`, `eval-team` |
-| [Constitutional Critique-and-Revise](prompts/rlhf/constitutional-critique-revise.md) | `stable` | `harmlessness`, `helpfulness`, `honesty`, `generation`, `structured-output`, `self-check` | `rlhf-team`, `llm-trainer`, `app-builder` |
-| [Pairwise Preference Labeler (HHH dimensions)](prompts/rlhf/pairwise-preference-labeler.md) | `stable` | `preference-labeling`, `pairwise`, `helpfulness`, `harmlessness`, `honesty`, `scoring` | `rlhf-team`, `llm-trainer`, `eval-team` |
-| [Pointwise Reward Scorer (single response → reward signal)](prompts/rlhf/pointwise-reward-scorer.md) | `experimental` | `reward-modeling`, `scoring`, `helpfulness`, `harmlessness`, `honesty`, `structured-output` | `rlhf-team`, `llm-trainer` |
+| Card | Use when | Status | Tags |
+|------|----------|--------|------|
+| [Best-of-N Response Selector](prompts/rlhf/best-of-n-selector.md) | Given N candidate responses to the same prompt, rank them and pick the best. | `stable` | `ranking`, `scoring`, `helpfulness`, `harmlessness`, `structured-output` |
+| [Constitutional Critique-and-Revise](prompts/rlhf/constitutional-critique-revise.md) | Produce a self-critique of an existing response against an explicit constitution (a list of principles), then a revised response that addresses the critique. | `stable` | `harmlessness`, `helpfulness`, `honesty`, `generation`, `structured-output`, `self-check` |
+| [Pairwise Preference Labeler (HHH dimensions)](prompts/rlhf/pairwise-preference-labeler.md) | Produce a pairwise preference label across the helpful / harmless / honest (HHH) dimensions for a single (prompt, response_a, response_b) triple. | `stable` | `preference-labeling`, `pairwise`, `helpfulness`, `harmlessness`, `honesty`, `scoring` |
+| [Pointwise Reward Scorer (single response → reward signal)](prompts/rlhf/pointwise-reward-scorer.md) | Produce a single scalar reward signal plus per-dimension breakdown for a single (prompt, response) pair, intended as **training data for reward model (RM) learning**, not as an... | `experimental` | `reward-modeling`, `scoring`, `helpfulness`, `harmlessness`, `honesty`, `structured-output` |
 
 ### SFT (`sft`)
 
-| Card | Status | Tags | Audience |
-|------|--------|------|----------|
-| [SFT Data Quality Filter](prompts/sft/data-quality-filter.md) | `stable` | `instruction-tuning`, `scoring`, `classification`, `structured-output`, `safety` | `sft-team`, `llm-trainer`, `eval-team` |
-| [Instruction Variant Expander (seed → diverse rewrites)](prompts/sft/instruction-variant-expander.md) | `stable` | `instruction-tuning`, `seed-expansion`, `data-augmentation`, `generation` | `sft-team`, `llm-trainer` |
-| [SFT Response Generator (instruction → high-quality response)](prompts/sft/response-generator.md) | `stable` | `instruction-tuning`, `generation`, `structured-output` | `sft-team`, `llm-trainer` |
-| [Self-Instruct — Generate New Instructions from a Seed Bank](prompts/sft/self-instruct-from-seed.md) | `stable` | `instruction-tuning`, `seed-expansion`, `generation`, `data-augmentation`, `structured-output` | `sft-team`, `llm-trainer` |
+| Card | Use when | Status | Tags |
+|------|----------|--------|------|
+| [SFT Data Quality Filter](prompts/sft/data-quality-filter.md) | Score a candidate (instruction, response) SFT pair on five quality dimensions and decide whether to KEEP it for training, REVIEW it (borderline), or DROP it. | `stable` | `instruction-tuning`, `scoring`, `classification`, `structured-output`, `safety` |
+| [Instruction Variant Expander (seed → diverse rewrites)](prompts/sft/instruction-variant-expander.md) | Take one seed instruction from a small high-quality SFT set and produce N diverse rewrites that preserve task semantics but vary surface form, register, and elicitation style. | `stable` | `instruction-tuning`, `seed-expansion`, `data-augmentation`, `generation` |
+| [SFT Response Generator (instruction → high-quality response)](prompts/sft/response-generator.md) | Produce a high-quality response to a single instruction, intended as the **target half of an SFT training pair**. | `stable` | `instruction-tuning`, `generation`, `structured-output` |
+| [Self-Instruct — Generate New Instructions from a Seed Bank](prompts/sft/self-instruct-from-seed.md) | Generate new, diverse instructions in the same task family as a small hand-curated seed bank — the Self-Instruct technique. | `stable` | `instruction-tuning`, `seed-expansion`, `generation`, `data-augmentation`, `structured-output` |
 
 ### Multimodal (`multimodal`)
 
-| Card | Status | Tags | Audience |
-|------|--------|------|----------|
-| [OCR + Structured Extraction from Document Images](prompts/multimodal/ocr-structured-extraction.md) | `stable` | `vision`, `ocr`, `extraction`, `structured-output` | `app-builder`, `eval-team`, `ai-pm` |
-| [Structured Image Caption Generator](prompts/multimodal/structured-caption-generator.md) | `stable` | `vision`, `image-description`, `generation`, `structured-output`, `extraction` | `app-builder`, `eval-team`, `llm-trainer` |
-| [VLM Image Description Verifier](prompts/multimodal/vlm-image-description-verifier.md) | `experimental` | `vision`, `image-description`, `vlm-eval`, `factuality`, `scoring` | `eval-team`, `llm-trainer`, `app-builder` |
-| [Visual Question Answering with Grounding and Confidence](prompts/multimodal/vqa-with-confidence.md) | `stable` | `vision`, `vlm-eval`, `structured-output`, `factuality`, `scoring` | `eval-team`, `app-builder`, `llm-trainer`, `ai-pm` |
+| Card | Use when | Status | Tags |
+|------|----------|--------|------|
+| [OCR + Structured Extraction from Document Images](prompts/multimodal/ocr-structured-extraction.md) | Extract a fixed set of named fields from a document image, returning both the OCR text and a typed structured object. | `stable` | `vision`, `ocr`, `extraction`, `structured-output` |
+| [Structured Image Caption Generator](prompts/multimodal/structured-caption-generator.md) | Produce a structured caption for an image — discrete fields for scene, salient objects, action, setting, and uncertain elements — instead of a single free-text paragraph. | `stable` | `vision`, `image-description`, `generation`, `structured-output`, `extraction` |
+| [VLM Image Description Verifier](prompts/multimodal/vlm-image-description-verifier.md) | Given an image and a candidate description, decide which claims in the description are supported by the image, which are unsupported (hallucinated), and which are missing import... | `experimental` | `vision`, `image-description`, `vlm-eval`, `factuality`, `scoring` |
+| [Visual Question Answering with Grounding and Confidence](prompts/multimodal/vqa-with-confidence.md) | Answer a question about an image and report whether the image actually supports the answer, where in the image the support comes from, and the model's confidence. | `stable` | `vision`, `vlm-eval`, `structured-output`, `factuality`, `scoring` |
 
 ### Chain-of-Thought (`cot`)
 
-| Card | Status | Tags | Audience |
-|------|--------|------|----------|
-| [Least-to-Most Decomposition](prompts/cot/least-to-most-decomposition.md) | `stable` | `decomposition-cot`, `structured-reasoning`, `structured-output` | `prompt-engineer`, `llm-trainer`, `ai-pm` |
-| [Self-Consistency Aggregator (majority vote over reasoning paths)](prompts/cot/self-consistency-aggregator.md) | `stable` | `structured-reasoning`, `self-check`, `rationale-summary`, `structured-output` | `prompt-engineer`, `llm-trainer`, `ai-pm` |
-| [Structured Reasoning with Rationale Summary](prompts/cot/structured-reasoning-with-rationale-summary.md) | `stable` | `structured-reasoning`, `rationale-summary`, `decomposition-cot`, `structured-output` | `prompt-engineer`, `llm-trainer`, `app-builder` |
-| [Verify-Then-Finalize (self-check before commit)](prompts/cot/verify-then-finalize.md) | `stable` | `self-check`, `structured-reasoning`, `factuality`, `structured-output` | `prompt-engineer`, `llm-trainer`, `app-builder` |
+| Card | Use when | Status | Tags |
+|------|----------|--------|------|
+| [Least-to-Most Decomposition](prompts/cot/least-to-most-decomposition.md) | Solve a complex question by first breaking it into a sequence of easier sub-problems, where each sub-problem is **strictly easier** than the original and each later sub-problem... | `stable` | `decomposition-cot`, `structured-reasoning`, `structured-output` |
+| [Self-Consistency Aggregator (majority vote over reasoning paths)](prompts/cot/self-consistency-aggregator.md) | Aggregate N independently-sampled reasoning paths for the same question into a single consensus answer plus agreement metrics — the self-consistency technique. | `stable` | `structured-reasoning`, `self-check`, `rationale-summary`, `structured-output` |
+| [Structured Reasoning with Rationale Summary](prompts/cot/structured-reasoning-with-rationale-summary.md) | Force a model to decompose a problem into named sub-steps, produce a final answer, and emit a *summary* rationale (not a hidden chain-of-thought trace) explaining the decision. | `stable` | `structured-reasoning`, `rationale-summary`, `decomposition-cot`, `structured-output` |
+| [Verify-Then-Finalize (self-check before commit)](prompts/cot/verify-then-finalize.md) | Produce a final answer in two phases — draft, then verify — within a single prompt. | `stable` | `self-check`, `structured-reasoning`, `factuality`, `structured-output` |
 
 ### Evaluation (`eval`)
 
-| Card | Status | Tags | Audience |
-|------|--------|------|----------|
-| [LLM-as-Judge Rubric for Open-Ended Outputs](prompts/eval/llm-judge-rubric-open-ended.md) | `stable` | `llm-judge`, `rubric`, `holistic`, `scoring`, `factuality`, `coherence` | `eval-team`, `ai-pm`, `llm-trainer` |
-| [Per-claim Factuality Judge (atomic decomposition)](prompts/eval/per-claim-factuality-judge.md) | `stable` | `llm-judge`, `factuality`, `scoring`, `structured-output`, `extraction` | `eval-team`, `llm-trainer`, `ai-pm` |
-| [Pointwise Quality Scorer with Confidence](prompts/eval/pointwise-quality-scorer.md) | `stable` | `llm-judge`, `scoring`, `holistic`, `structured-output`, `coherence` | `eval-team`, `ai-pm`, `llm-trainer` |
-| [Reference-based Judge (output vs gold)](prompts/eval/reference-based-judge.md) | `stable` | `llm-judge`, `scoring`, `factuality`, `comparative`, `structured-output` | `eval-team`, `llm-trainer`, `ai-pm` |
-| [Safety Output Classifier (defensive)](prompts/eval/safety-output-classifier.md) | `stable` | `safety`, `harmlessness`, `classification`, `llm-judge`, `structured-output` | `eval-team`, `rlhf-team`, `ai-pm`, `app-builder` |
+| Card | Use when | Status | Tags |
+|------|----------|--------|------|
+| [LLM-as-Judge Rubric for Open-Ended Outputs](prompts/eval/llm-judge-rubric-open-ended.md) | Score a single open-ended model output against a rubric covering factuality, instruction-following, coherence, and completeness. | `stable` | `llm-judge`, `rubric`, `holistic`, `scoring`, `factuality`, `coherence` |
+| [Per-claim Factuality Judge (atomic decomposition)](prompts/eval/per-claim-factuality-judge.md) | Decompose a model output into atomic factual claims and label each as true, false, unverifiable, or non-factual (opinion / interpretation / not a factual statement). | `stable` | `llm-judge`, `factuality`, `scoring`, `structured-output`, `extraction` |
+| [Pointwise Quality Scorer with Confidence](prompts/eval/pointwise-quality-scorer.md) | Produce a single-output, multi-dimensional quality score with explicit self-reported confidence. | `stable` | `llm-judge`, `scoring`, `holistic`, `structured-output`, `coherence` |
+| [Reference-based Judge (output vs gold)](prompts/eval/reference-based-judge.md) | Score a model output against a known-correct gold answer on three axes: substantive correctness, completeness relative to the gold, and stylistic fidelity (only as far as the us... | `stable` | `llm-judge`, `scoring`, `factuality`, `comparative`, `structured-output` |
+| [Safety Output Classifier (defensive)](prompts/eval/safety-output-classifier.md) | Classify a single model output for safety along a defined harm taxonomy and decide whether it should be allowed through, surfaced for review, or blocked. | `stable` | `safety`, `harmlessness`, `classification`, `llm-judge`, `structured-output` |
 
 ## Cards by tag
 

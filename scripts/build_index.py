@@ -33,7 +33,8 @@ DIRECTION_LABEL = {
 }
 
 
-def parse_frontmatter(path: Path) -> dict:
+def parse_card(path: Path) -> tuple[dict, str]:
+    """Return (frontmatter, body) for a card file."""
     text = path.read_text(encoding="utf-8")
     if not text.startswith("---\n"):
         raise ValueError(f"{path}: missing frontmatter")
@@ -44,7 +45,56 @@ def parse_frontmatter(path: Path) -> dict:
     fm = yaml.safe_load(rest[:end])
     if not isinstance(fm, dict):
         raise ValueError(f"{path}: frontmatter is not a mapping")
-    return fm
+    body = rest[end + 5:]
+    return fm, body
+
+
+def extract_use_when(body: str) -> str:
+    """Extract a one-line 'use when' summary from the card body.
+
+    Strategy: take the first sentence of the '## Purpose' section, with
+    a length cap so the INDEX table stays scannable.
+    """
+    marker = "\n## Purpose\n"
+    idx = body.find(marker)
+    if idx == -1 and body.startswith("## Purpose\n"):
+        idx = 0
+        section_start = idx + len("## Purpose\n")
+    elif idx != -1:
+        section_start = idx + len(marker)
+    else:
+        return ""
+    next_section = body.find("\n## ", section_start)
+    purpose = body[section_start:next_section if next_section != -1 else None].strip()
+    # Take the first sentence: up to the first period followed by space, or first newline-newline.
+    para_end = purpose.find("\n\n")
+    if para_end != -1:
+        purpose = purpose[:para_end]
+    purpose = purpose.replace("\n", " ").strip()
+    # Walk forward looking for a real sentence boundary, skipping common
+    # abbreviations like "i.e.", "e.g.", "etc.", "vs.", "Mr.", "Dr." that
+    # contain "." but should not split a sentence.
+    abbrev_blocklist = ("i.e.", "e.g.", "etc.", "vs.", "mr.", "dr.", "mrs.", "ms.")
+    pos = 0
+    chosen = -1
+    while True:
+        idx = purpose.find(". ", pos)
+        if idx == -1:
+            break
+        # Look at the 5 chars ending at idx+1 (the period). If they form a
+        # known abbreviation, skip past and keep searching.
+        prefix = purpose[max(0, idx - 4):idx + 1].lower()
+        if any(prefix.endswith(ab) for ab in abbrev_blocklist):
+            pos = idx + 2
+            continue
+        chosen = idx
+        break
+    if 0 < chosen < 200:
+        purpose = purpose[:chosen + 1]
+    # Hard cap to keep table cells reasonable.
+    if len(purpose) > 180:
+        purpose = purpose[:177].rstrip() + "..."
+    return purpose
 
 
 def main() -> int:
@@ -53,13 +103,14 @@ def main() -> int:
         print(f"ERROR: no prompt cards found under {PROMPTS_DIR}", file=sys.stderr)
         return 1
 
-    by_dir: dict[str, list[tuple[dict, str]]] = defaultdict(list)
+    by_dir: dict[str, list[tuple[dict, str, str]]] = defaultdict(list)
     by_tag: dict[str, list[tuple[dict, str]]] = defaultdict(list)
 
     for path in cards:
-        fm = parse_frontmatter(path)
+        fm, body = parse_card(path)
         rel = path.relative_to(REPO_ROOT).as_posix()
-        by_dir[fm["direction"]].append((fm, rel))
+        use_when = extract_use_when(body)
+        by_dir[fm["direction"]].append((fm, rel, use_when))
         for tag in fm.get("tags", []):
             by_tag[tag].append((fm, rel))
 
@@ -79,14 +130,15 @@ def main() -> int:
             continue
         lines.append(f"### {DIRECTION_LABEL[direction]} (`{direction}`)")
         lines.append("")
-        lines.append("| Card | Status | Tags | Audience |")
-        lines.append("|------|--------|------|----------|")
-        for fm, rel in sorted(items, key=lambda pair: pair[0]["id"]):
+        lines.append("| Card | Use when | Status | Tags |")
+        lines.append("|------|----------|--------|------|")
+        for fm, rel, use_when in sorted(items, key=lambda triple: triple[0]["id"]):
             link = f"[{fm['title']}]({rel})"
             tags = ", ".join(f"`{t}`" for t in fm["tags"])
-            audience = ", ".join(f"`{a}`" for a in fm["audience"])
+            # Escape pipe characters in use_when for table safety
+            cell = use_when.replace("|", "\\|") if use_when else ""
             lines.append(
-                f"| {link} | `{fm['status']}` | {tags} | {audience} |"
+                f"| {link} | {cell} | `{fm['status']}` | {tags} |"
             )
         lines.append("")
 
