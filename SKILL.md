@@ -1,6 +1,6 @@
 ---
 name: prompt-atlas
-description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. 68 cards across 8 directions — RAG, Agent, RLHF, SFT, Multimodal, Chain-of-Thought, Evaluation, Code. Triggers when the user asks for a prompt for retrieval scoring, multi-hop QA, query rewriting, HyDE, citation auditing, hallucination detection, chunk summarization, context compression, agent planning / tool-call schema, agent reflection, tool-call repair, plan-and-execute, trajectory memory compression, multi-agent sub-task delegation, pairwise preference labeling, pointwise reward scoring, constitutional critique-and-revise, best-of-N selection, red-team prompt generation, instruction augmentation, self-instruct, SFT data filtering, SFT response generation, multi-turn conversation generation, few-shot example selection, structured image captioning, visual question answering, VLM caption verification, OCR structured extraction, chart and table extraction, structured reasoning, least-to-most decomposition, self-consistency aggregation, verify-then-finalize, tree-of-thoughts, LLM-as-judge rubrics, reference-based judging, per-claim factuality, pointwise quality scoring, safety output classification, position-bias-aware pairwise judging, multi-turn dialogue judging, code review, test case generation, code explanation, code evaluation, or refactor suggestion. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
+description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. 83 cards across 8 directions — RAG, Agent, RLHF, SFT, Multimodal, Chain-of-Thought, Evaluation, Code. Triggers when the user asks for a prompt for retrieval scoring, multi-hop QA, query rewriting, HyDE, citation auditing, hallucination detection, chunk summarization, context compression, agent planning / tool-call schema, agent reflection, tool-call repair, plan-and-execute, trajectory memory compression, multi-agent sub-task delegation, pairwise preference labeling, pointwise reward scoring, constitutional critique-and-revise, best-of-N selection, red-team prompt generation, instruction augmentation, self-instruct, SFT data filtering, SFT response generation, multi-turn conversation generation, few-shot example selection, structured image captioning, visual question answering, VLM caption verification, OCR structured extraction, chart and table extraction, structured reasoning, least-to-most decomposition, self-consistency aggregation, verify-then-finalize, tree-of-thoughts, LLM-as-judge rubrics, reference-based judging, per-claim factuality, pointwise quality scoring, safety output classification, position-bias-aware pairwise judging, multi-turn dialogue judging, code review, test case generation, code explanation, code evaluation, or refactor suggestion. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
 ---
 
 # prompt-atlas
@@ -66,6 +66,7 @@ User describes...                                                               
 "compress retrieved passages into a smaller question-tailored context"             → rag/context-compression
 "resolve a chat follow-up ('what about that?') into a standalone retrieval query"  → rag/conversational-query-resolver
 "synthesize an answer from multiple sources, surfacing conflicts and citations"    → rag/multi-source-aggregator
+"build a structured output (table / list / record) from RAG sources with citations" → rag/structured-rag-output-builder
 ```
 
 ### Agent
@@ -82,6 +83,8 @@ User describes...                                                               
 "decide whether a goal is too ambiguous to act on; ask one good clarifying question" → agent/clarification-asker
 "convert an OpenAPI / Swagger / JSON Schema spec into an agent tool catalog"       → agent/api-spec-to-tool-catalog
 "decide retry / abort / escalate when an agent operation fails"                    → agent/error-recovery-strategy
+"plan agent execution within a token / dollar budget"                              → agent/budget-aware-planner
+"compress a tool's verbose output before adding to agent context"                  → agent/tool-output-summarizer
 ```
 
 ### RLHF
@@ -97,6 +100,8 @@ User describes...                                                               
 "diagnose model refusal calibration (over-refusal vs under-refusal vs correct)"    → rlhf/refusal-calibration-probe
 "generate iterative DPO (chosen, rejected) pairs targeting one principle"          → rlhf/iterative-dpo-pair-generator
 "score whether a response matches a defined persona / brand voice"                 → rlhf/persona-consistency-judge
+"score helpfulness vs harmlessness independently to detect over-cautious failures" → rlhf/helpfulness-vs-harmlessness-tradeoff
+"label pairwise preference for long-form (long input + long output) responses"     → rlhf/long-context-preference-labeler
 ```
 
 ### SFT
@@ -112,6 +117,8 @@ User describes...                                                               
 "select best K few-shot demonstrations from a candidate pool for a query"          → sft/few-shot-example-selector
 "generate a response in a defined persona / brand voice (with strictness)"         → sft/persona-controlled-response
 "rewrite text in a target style (formal / casual / specific voice)"                → sft/style-transfer
+"analyze SFT dataset coverage by topic / skill, find gaps and over-representation" → sft/data-coverage-analyzer
+"classify an instruction's difficulty for a target model class"                    → sft/instruction-difficulty-classifier
 ```
 
 ### Multimodal
@@ -127,6 +134,8 @@ User describes...                                                               
 "analyze a document page's layout (title, body, tables, figures, reading order)"   → multimodal/document-layout-analyzer
 "extract graph structure from a diagram / flowchart / architecture image"          → multimodal/diagram-to-structured-data
 "convert a UI screenshot into a component spec (component tree + layout)"          → multimodal/screenshot-to-spec
+"classify an image into custom user-defined categories with confidence"            → multimodal/image-classification
+"transcribe handwritten text with per-word confidence"                             → multimodal/handwriting-transcriber
 ```
 
 ### Chain-of-Thought
@@ -142,6 +151,8 @@ User describes...                                                               
 "abstract the question into a principle first, then apply (step-back prompting)"   → cot/step-back-prompting
 "critique and revise a candidate reasoning plan before execution"                  → cot/plan-critique-and-revise
 "reason with explicit per-step uncertainty and a final confidence range"           → cot/uncertainty-quantification
+"reasoning where every claim must cite a provided source"                          → cot/citation-grounded-reasoning
+"contrast correct path against an articulated wrong path (anti-misconception)"     → cot/contrastive-self-consistency
 ```
 
 ### Evaluation
@@ -159,6 +170,7 @@ User describes...                                                               
 "generate a domain-specific rubric with concrete level anchors (1-5)"              → eval/rubric-generator
 "compare baseline vs candidate outputs and detect quality regressions"             → eval/regression-detector
 "diagnose LLM judge biases (length / position / format / verbosity)"               → eval/judge-bias-probe
+"check confidence calibration (predicted confidence vs actual accuracy)"           → eval/calibration-checker
 ```
 
 ### Code
@@ -173,6 +185,9 @@ User describes...                                                               
 "suggest concrete refactors with rationale and impact (single goal per call)"      → code/refactor-suggestion
 "translate code from one language to another (literal / idiomatic / balanced)"     → code/code-translation
 "focused code security review with CWE-style findings and threat model"            → code/security-review
+"summarize a git diff into a structured PR description (changes + risks + tests)"  → code/code-summary-for-pr
+"plan a major version migration grounded in actual code (phased + ordered)"        → code/migration-plan-generator
+"analyze the impact of changing a function / API signature on a codebase"          → code/dependency-impact-analyzer
 ```
 
 For tasks not covered above:
@@ -258,7 +273,7 @@ content.
 
 ```
 prompt-atlas/
-├── prompts/<direction>/<slug>.md     ← the cards (68 total)
+├── prompts/<direction>/<slug>.md     ← the cards (83 total)
 ├── templates/prompt-card.md          ← canonical template
 ├── docs/SCHEMA.md                    ← frontmatter + tag vocabulary
 ├── docs/SAFETY.md                    ← policy

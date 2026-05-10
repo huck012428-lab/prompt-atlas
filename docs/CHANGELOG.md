@@ -133,6 +133,45 @@ multimodal 6, rlhf 6. Total 53. All directions ≥6.
 Per-direction now: rag 10, eval 10, agent 9, sft 8, multimodal 8,
 cot 8, rlhf 8, code 7. Total 68.
 
+#### Batch 2 to 83 (15 more cards)
+- code/code-summary-for-pr — git diff → structured PR description
+  with categorized changes, risks, and test suggestions.
+- code/migration-plan-generator — phased plan for major version
+  upgrades grounded in actual code patterns.
+- code/dependency-impact-analyzer — assess impact of changing a
+  function / API signature; classifies call sites by required work.
+- agent/budget-aware-planner — plan agent execution under token /
+  dollar budget; surfaces tradeoffs honestly.
+- agent/tool-output-summarizer — compress verbose tool output
+  before context inclusion (between tool execution and next
+  reasoning step).
+- rlhf/helpfulness-vs-harmlessness-tradeoff — score the two HHH
+  axes independently and identify over_cautious / unsafe_helpful
+  failures.
+- rlhf/long-context-preference-labeler — pairwise preference for
+  long-form responses with per-section judgments and long-form
+  failure mode detection.
+- sft/data-coverage-analyzer — diagnose SFT dataset coverage by
+  topic / skill; identify gaps and over-representation.
+- sft/instruction-difficulty-classifier — classify per-instruction
+  difficulty calibrated to a target model class.
+- multimodal/image-classification — custom-category image
+  classification with single_label / multi_label modes.
+- multimodal/handwriting-transcriber — handwriting transcription
+  with per-word confidence.
+- cot/citation-grounded-reasoning — reasoning where every factual
+  claim cites a provided source (or is marked inference / common
+  knowledge).
+- cot/contrastive-self-consistency — articulate a plausible wrong
+  path and contrast with correct path; anti-misconception.
+- eval/calibration-checker — bucket predictions by confidence and
+  measure ECE; identify over-confident / under-confident regions.
+- rag/structured-rag-output-builder — produce structured outputs
+  (table / list / record) from RAG sources with per-cell citations.
+
+Per-direction: rag 11, eval 11, agent 11, sft 10, multimodal 10,
+cot 10, rlhf 10, code 10. Total 83. All directions ≥10.
+
 #### Bilingual at-a-glance (`场景` blockquote)
 - Every card now opens with a single-line Chinese `> 🎯 **场景**：...`
   blockquote summarizing the use case. Aimed at non-English readers

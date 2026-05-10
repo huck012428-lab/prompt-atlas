@@ -77,9 +77,14 @@ Maps a goal to the card to use. New here? See
 | Generate a domain-specific rubric with level anchors · 给具体任务自动生成定制化评分 rubric | [`eval/rubric-generator`](prompts/eval/rubric-generator.md) |
 | Compare baseline vs candidate outputs and detect regressions · 检测候选版本是否退步 | [`eval/regression-detector`](prompts/eval/regression-detector.md) |
 | Diagnose LLM judge biases (length / position / format) · 诊断 LLM judge 自身偏见 | [`eval/judge-bias-probe`](prompts/eval/judge-bias-probe.md) |
+| Check confidence calibration (predicted vs actual accuracy) · 检查置信度是否校准 | [`eval/calibration-checker`](prompts/eval/calibration-checker.md) |
 | Diagnose refusal calibration (over / under / correct) · 诊断模型拒绝是否校准 | [`rlhf/refusal-calibration-probe`](prompts/rlhf/refusal-calibration-probe.md) |
 | Generate iterative DPO pairs targeting a specific principle · 按原则生成 DPO 偏好对 | [`rlhf/iterative-dpo-pair-generator`](prompts/rlhf/iterative-dpo-pair-generator.md) |
 | Score whether a response matches a defined persona / brand voice · 评估回答是否符合人设 | [`rlhf/persona-consistency-judge`](prompts/rlhf/persona-consistency-judge.md) |
+| Detect over-cautious vs unsafe-helpful (HHH tradeoff scoring) · 诊断 helpful 和 harmless 之间的失衡 | [`rlhf/helpfulness-vs-harmlessness-tradeoff`](prompts/rlhf/helpfulness-vs-harmlessness-tradeoff.md) |
+| Pairwise preference for long-form (long input + long output) · 长输入长输出的 pairwise 偏好 | [`rlhf/long-context-preference-labeler`](prompts/rlhf/long-context-preference-labeler.md) |
+| Analyze SFT dataset coverage by topic / skill · 分析 SFT 数据集覆盖度，找 gap | [`sft/data-coverage-analyzer`](prompts/sft/data-coverage-analyzer.md) |
+| Classify instruction difficulty for a target model class · 按目标模型类别给指令打难度 | [`sft/instruction-difficulty-classifier`](prompts/sft/instruction-difficulty-classifier.md) |
 | Generate response in a defined persona with strictness control · 按人设生成回答（带严格度控制） | [`sft/persona-controlled-response`](prompts/sft/persona-controlled-response.md) |
 | Rewrite text in a target style (formal / casual / specific voice) · 文本改写为目标风格 | [`sft/style-transfer`](prompts/sft/style-transfer.md) |
 
@@ -97,6 +102,7 @@ Maps a goal to the card to use. New here? See
 | Compress retrieved passages into a smaller question-tailored context · 把检索结果压缩成针对问题的小上下文 | [`rag/context-compression`](prompts/rag/context-compression.md) |
 | Resolve a chat follow-up into a standalone retrieval query · 多轮 RAG 的代词消解器 | [`rag/conversational-query-resolver`](prompts/rag/conversational-query-resolver.md) |
 | Synthesize an answer from multiple sources, surfacing conflicts · 多源综合答案 + 冲突识别 | [`rag/multi-source-aggregator`](prompts/rag/multi-source-aggregator.md) |
+| Build structured output (table / list / record) from RAG sources · RAG 结构化输出（表/列表/字段记录） | [`rag/structured-rag-output-builder`](prompts/rag/structured-rag-output-builder.md) |
 
 ### Build / debug an agent · 搭建和调试 Agent
 
@@ -111,6 +117,8 @@ Maps a goal to the card to use. New here? See
 | Decide whether a goal needs clarification, ask one good question · 判断是否要问澄清问题，问一个好问题 | [`agent/clarification-asker`](prompts/agent/clarification-asker.md) |
 | Convert OpenAPI / Swagger spec into agent tool catalog · OpenAPI 自动转 tool catalog | [`agent/api-spec-to-tool-catalog`](prompts/agent/api-spec-to-tool-catalog.md) |
 | Decide retry / abort / escalate on operation failure · 操作失败时决定重试/放弃/升级 | [`agent/error-recovery-strategy`](prompts/agent/error-recovery-strategy.md) |
+| Plan agent execution within token / dollar budget · 在预算约束下规划 agent 执行 | [`agent/budget-aware-planner`](prompts/agent/budget-aware-planner.md) |
+| Compress verbose tool output before adding to context · 把 tool 输出压缩后再进 context | [`agent/tool-output-summarizer`](prompts/agent/tool-output-summarizer.md) |
 
 ### Generate / filter training data · 训练数据生成与过滤
 
@@ -138,6 +146,8 @@ Maps a goal to the card to use. New here? See
 | Analyze a document page's layout (title / body / tables / figures) · 分析文档页面版式结构 | [`multimodal/document-layout-analyzer`](prompts/multimodal/document-layout-analyzer.md) |
 | Extract graph structure from a diagram / flowchart / architecture · 流程图/架构图转结构化数据 | [`multimodal/diagram-to-structured-data`](prompts/multimodal/diagram-to-structured-data.md) |
 | Convert a UI screenshot into a component spec · UI 截图转组件树 spec | [`multimodal/screenshot-to-spec`](prompts/multimodal/screenshot-to-spec.md) |
+| Classify image into custom user-defined categories · 自定义类别图像分类 | [`multimodal/image-classification`](prompts/multimodal/image-classification.md) |
+| Transcribe handwriting with per-word confidence · 手写文字转录 + 字级置信度 | [`multimodal/handwriting-transcriber`](prompts/multimodal/handwriting-transcriber.md) |
 
 ### Improve reasoning quality · 提升推理质量
 
@@ -151,6 +161,8 @@ Maps a goal to the card to use. New here? See
 | Abstract the question into a principle first, then apply (step-back) · 先抽象到原理再代入具体题 | [`cot/step-back-prompting`](prompts/cot/step-back-prompting.md) |
 | Critique and revise a candidate plan before execution · 执行前对推理 plan critique + 修订 | [`cot/plan-critique-and-revise`](prompts/cot/plan-critique-and-revise.md) |
 | Reasoning with explicit per-step uncertainty · 明示每步不确定度的推理 | [`cot/uncertainty-quantification`](prompts/cot/uncertainty-quantification.md) |
+| Citation-grounded reasoning (every claim must cite source) · 每条事实必须引用 source 的推理 | [`cot/citation-grounded-reasoning`](prompts/cot/citation-grounded-reasoning.md) |
+| Contrast against intentionally-wrong reasoning · 对照错误推理路径的反向自洽 | [`cot/contrastive-self-consistency`](prompts/cot/contrastive-self-consistency.md) |
 
 ### Work with code · 处理代码
 
@@ -163,6 +175,9 @@ Maps a goal to the card to use. New here? See
 | Suggest concrete refactors with rationale · 提结构化重构建议 | [`code/refactor-suggestion`](prompts/code/refactor-suggestion.md) |
 | Translate code from one language to another · 跨语言代码翻译（含 idiom 控制） | [`code/code-translation`](prompts/code/code-translation.md) |
 | Focused security review with CWE-style findings · 按 threat model 做代码安全评审 | [`code/security-review`](prompts/code/security-review.md) |
+| Summarize git diff into structured PR description · git diff 转结构化 PR description | [`code/code-summary-for-pr`](prompts/code/code-summary-for-pr.md) |
+| Plan major version migration grounded in actual code · 大版本迁移阶段化规划 | [`code/migration-plan-generator`](prompts/code/migration-plan-generator.md) |
+| Analyze impact of changing a function / API signature · 评估函数 / API 签名改动的影响范围 | [`code/dependency-impact-analyzer`](prompts/code/dependency-impact-analyzer.md) |
 
 ## How to use it / 如何使用
 
@@ -290,12 +305,12 @@ clarity.
 ## Status / 当前状态
 
 **v0.1.0** — first public release with 32 Prompt Cards. Library has
-since grown to **68 Prompt Cards across all 7 directions** (post-v0.1
+since grown to **83 Prompt Cards across all 7 directions** (post-v0.1
 additions tracked in [`CHANGELOG.md`](docs/CHANGELOG.md)).
 See [`ROADMAP.md`](docs/ROADMAP.md) for what's planned next. Pull
 requests welcome.
 
 **v0.1.0** —— 首个公开版本，32 张 Prompt Card。后续已扩到
-**68 张，覆盖 8 个方向**（v0.1 之后的新卡见
+**83 张，覆盖 8 个方向**（v0.1 之后的新卡见
 [`CHANGELOG.md`](docs/CHANGELOG.md)）。后续计划见
 [`ROADMAP.md`](docs/ROADMAP.md)，欢迎 PR。
