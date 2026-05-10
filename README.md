@@ -48,6 +48,75 @@ The complete catalog lives in [`INDEX.md`](INDEX.md) (auto-generated).
 
 完整目录见 [`INDEX.md`](INDEX.md)（自动生成）。
 
+## I want to... / 我想做...
+
+Maps a goal to the card to use. New here? See
+[`docs/QUICKSTART.md`](docs/QUICKSTART.md) for a 5-minute walkthrough.
+
+第一次用？看 [`docs/QUICKSTART.md`](docs/QUICKSTART.md) — 5 分钟从零到能用一张卡。
+
+### Evaluate / score AI outputs · 评估和打分
+
+| Goal · 我想做                                                          | Card · 用这张卡 |
+|------------------------------------------------------------------------|-----------------|
+| Score one AI output on factuality / coherence / completeness · 给单个 AI 输出按多维度打分 | [`eval/llm-judge-rubric-open-ended`](prompts/eval/llm-judge-rubric-open-ended.md) |
+| Compare a model output against a gold answer · 用 gold 答案对照打分 | [`eval/reference-based-judge`](prompts/eval/reference-based-judge.md) |
+| Decompose an output into atomic claims and fact-check each · 把答案拆成原子事实逐条核查 | [`eval/per-claim-factuality-judge`](prompts/eval/per-claim-factuality-judge.md) |
+| Score one output on custom dimensions with confidence · 自定义维度打分 + 置信度 | [`eval/pointwise-quality-scorer`](prompts/eval/pointwise-quality-scorer.md) |
+| Classify an AI output for safety harms · 输出安全分类（allow/review/block） | [`eval/safety-output-classifier`](prompts/eval/safety-output-classifier.md) |
+| Pick the best of N AI responses · 从 N 个回答里选最好的 | [`rlhf/best-of-n-selector`](prompts/rlhf/best-of-n-selector.md) |
+| Label A vs B preference (HHH) · 给 A/B 两个回答打偏好标签 | [`rlhf/pairwise-preference-labeler`](prompts/rlhf/pairwise-preference-labeler.md) |
+
+### RAG · 检索增强
+
+| Goal · 我想做                                                          | Card · 用这张卡 |
+|------------------------------------------------------------------------|-----------------|
+| Score whether a retrieved passage is relevant to a query · 评估 passage 与 query 的相关性 | [`rag/retrieval-relevance-evaluator`](prompts/rag/retrieval-relevance-evaluator.md) |
+| Build multi-hop QA eval questions · 合成多跳评测题 | [`rag/multihop-eval-synthesizer`](prompts/rag/multihop-eval-synthesizer.md) |
+| Decompose / rewrite a query for retrieval · query 改写或拆解 | [`rag/query-rewriting-decomposition`](prompts/rag/query-rewriting-decomposition.md) |
+| Generate hypothetical answer for HyDE retrieval · HyDE 假答生成 | [`rag/hyde-hypothetical-answer-generator`](prompts/rag/hyde-hypothetical-answer-generator.md) |
+| Audit whether a citation actually supports a claim · 审计 citation 是否真的支持 claim | [`rag/citation-faithfulness-scorer`](prompts/rag/citation-faithfulness-scorer.md) |
+| Detect hallucinations in a RAG answer · 检测 RAG 答案的幻觉 | [`rag/answer-grounding-checker`](prompts/rag/answer-grounding-checker.md) |
+
+### Build / debug an agent · 搭建和调试 Agent
+
+| Goal · 我想做                                                          | Card · 用这张卡 |
+|------------------------------------------------------------------------|-----------------|
+| Run a ReAct loop with strict tool calls · 跑 ReAct loop，严格 tool call | [`agent/react-planner-with-tool-schema`](prompts/agent/react-planner-with-tool-schema.md) |
+| Produce a complete plan upfront · 一次性给出完整计划 | [`agent/plan-and-execute-planner`](prompts/agent/plan-and-execute-planner.md) |
+| Fix a malformed tool call from a validation error · 修复格式错误的 tool call | [`agent/tool-call-repair`](prompts/agent/tool-call-repair.md) |
+| Reflect on whether the trajectory is on track · 反思 agent 是否在正轨 | [`agent/self-critique-reflection`](prompts/agent/self-critique-reflection.md) |
+| Compress a long agent trajectory into memory · 把长 trajectory 压缩成 memory | [`agent/long-context-memory-summarizer`](prompts/agent/long-context-memory-summarizer.md) |
+
+### Generate / filter training data · 训练数据生成与过滤
+
+| Goal · 我想做                                                          | Card · 用这张卡 |
+|------------------------------------------------------------------------|-----------------|
+| Rewrite ONE instruction into N variants · 把 1 条指令改写成 N 个变体 | [`sft/instruction-variant-expander`](prompts/sft/instruction-variant-expander.md) |
+| Generate NEW instructions from seed examples · 从种子生成新指令 | [`sft/self-instruct-from-seed`](prompts/sft/self-instruct-from-seed.md) |
+| Generate a high-quality response for an instruction · 给指令生成回答 | [`sft/response-generator`](prompts/sft/response-generator.md) |
+| Filter SFT pairs by quality (keep / review / drop) · 按质量过滤 SFT 数据 | [`sft/data-quality-filter`](prompts/sft/data-quality-filter.md) |
+| Produce scalar reward for one response · 给单回答打 reward 分 | [`rlhf/pointwise-reward-scorer`](prompts/rlhf/pointwise-reward-scorer.md) |
+| Critique a response against a constitution and revise · 按 constitution 批评 + 重写 | [`rlhf/constitutional-critique-revise`](prompts/rlhf/constitutional-critique-revise.md) |
+
+### Work with images · 处理图像
+
+| Goal · 我想做                                                          | Card · 用这张卡 |
+|------------------------------------------------------------------------|-----------------|
+| Generate a structured caption for an image · 给图片生成结构化 caption | [`multimodal/structured-caption-generator`](prompts/multimodal/structured-caption-generator.md) |
+| Verify a caption against the actual image · 核对 caption 与图像 | [`multimodal/vlm-image-description-verifier`](prompts/multimodal/vlm-image-description-verifier.md) |
+| Answer a question about an image · 视觉问答 + grounding + 置信度 | [`multimodal/vqa-with-confidence`](prompts/multimodal/vqa-with-confidence.md) |
+| Extract typed fields from a document image · 从文档图片抽取结构化字段 | [`multimodal/ocr-structured-extraction`](prompts/multimodal/ocr-structured-extraction.md) |
+
+### Improve reasoning quality · 提升推理质量
+
+| Goal · 我想做                                                          | Card · 用这张卡 |
+|------------------------------------------------------------------------|-----------------|
+| Single-pass structured reasoning with rationale · 单次结构化推理 + rationale | [`cot/structured-reasoning-with-rationale-summary`](prompts/cot/structured-reasoning-with-rationale-summary.md) |
+| Decompose a complex problem into easier sub-problems · 把复杂问题拆成更简单的子问题 | [`cot/least-to-most-decomposition`](prompts/cot/least-to-most-decomposition.md) |
+| Aggregate N sampled paths into a consensus answer · 把 N 条采样路径聚合成共识答案 | [`cot/self-consistency-aggregator`](prompts/cot/self-consistency-aggregator.md) |
+| Draft + verify before committing to a final answer · 先 draft 再 verify 再交答案 | [`cot/verify-then-finalize`](prompts/cot/verify-then-finalize.md) |
+
 ## How to use it / 如何使用
 
 ### As a GitHub repository / 作为 GitHub 仓库
