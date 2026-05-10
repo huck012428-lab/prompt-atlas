@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：Constitutional AI 一次完成"按 constitution 批评 + 重写"。产出 (original, revised) 对作为 RLHF 偏好数据，或在 inference 时清理 borderline 输出。带 over_refusal_check 防止安全名义下删 substance。
+
 ## Quick Use
 
 **Use when:** You want Constitutional AI training data (or to clean up a response at inference) by critiquing it against principles and revising.

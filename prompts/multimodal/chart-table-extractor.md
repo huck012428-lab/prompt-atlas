@@ -20,6 +20,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：从图表 / 绘图 / 表格图片抽数据——识别图表类型、读 axis label、抽 data points，每个数据点带置信度（图上有 value label = high，从 gridline 估 = medium / low）。需要 vision 模型。和 OCR 卡互补：OCR 处理文档，本卡处理可视化。
+
 ## Quick Use
 
 **Use when:** You have an image of a chart, plot, or table (e.g. from a paper, dashboard screenshot, slide deck) and want the data as a structured object.

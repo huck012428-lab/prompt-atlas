@@ -23,6 +23,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：单输出 reward 打分——只有单回答没有对照时用，输出 0-100 标量 reward + 维度分 + 置信度 + training_usable 过滤位。**绝大多数 RLHF 数据应优先用 pairwise 卡**，本卡是 fallback。
+
 ## Quick Use
 
 **Use when:** You only have a single response (no comparison pair) and need a scalar reward signal for reward model training data.

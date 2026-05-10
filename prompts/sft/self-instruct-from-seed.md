@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：Self-Instruct 技术——从 5-10 条种子指令出发生成同 task family 的**新**指令（不是改写）。SFT 数据从手工种子规模化的横向维度，和 variant-expander 互补。
+
 ## Quick Use
 
 **Use when:** You have a small bank of seed instructions and want to generate NEW instructions in the same task family (Self-Instruct technique).

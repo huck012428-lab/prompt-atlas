@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：多轮对话评估——per-turn 打分（context 用得好不好、helpful、safe）+ conversation 级打分（coherence、task_completion、repair_handling）+ weakest_turn 字段供 RLHF DPO fork。chat 模型 eval 的多轮维度。
+
 ## Quick Use
 
 **Use when:** You're evaluating a chat model and need to judge a multi-turn conversation, not just a single response.

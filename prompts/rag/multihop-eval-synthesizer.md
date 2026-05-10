@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：给两段 passage 合成"必须组合两者才能答"的多跳评测题。RAG eval-set 构建专用，避免单 passage 就能猜对的伪多跳。
+
 ## Quick Use
 
 **Use when:** You want to generate a multi-hop QA evaluation question from two related passages.

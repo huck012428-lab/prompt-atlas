@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：Tree-of-Thoughts——并行探索多个**结构上不同**的解法分支，给每个分支打 promise 分，剪掉不靠谱的，从最有希望的叶子产出答案。适合有多种 plausible attack vector 的难题。
+
 ## Quick Use
 
 **Use when:** A problem has multiple plausible reasoning paths and a single linear chain might miss the right one — combinatorial planning, search, design problems with trade-offs.

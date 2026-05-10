@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：从样本池给目标 query 选最好的 K 个 demo，兼顾 per-demo 相关性 + 集合多样性 + primacy effect 排序。few-shot prompt 工程中"per-query 动态选 demo"的核心步骤。
+
 ## Quick Use
 
 **Use when:** You have a pool of (instruction, response) demonstrations and want to pick the best K for few-shot prompting a specific target query.

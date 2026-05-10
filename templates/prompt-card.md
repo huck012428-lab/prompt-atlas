@@ -17,6 +17,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：`<一句中文场景描述：让中文读者一眼明白这张卡解决什么问题、什么时候用>`。
+
 ## Quick Use
 
 **Use when:** `<one short clause: what problem this card solves, in plain English>`.

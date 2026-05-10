@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：tool call 通过不了 schema 校验时（类型错、缺必填字段等），按错误信息修复参数。**保留原意图**，不许伪造缺失字段——必填字段不能从原 call 推断时直接 escalate。
+
 ## Quick Use
 
 **Use when:** A tool call failed schema validation and you want to repair it before escalating to a strategy reflection.

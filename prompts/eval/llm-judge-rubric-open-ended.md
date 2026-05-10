@@ -23,6 +23,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：开放式输出（长文 / 解释 / advice）的 LLM-as-judge 打分——固定 4 维度（factuality / instruction-following / coherence / completeness）+ 整体 verdict。无 gold 答案场景的主力打分卡。
+
 ## Quick Use
 
 **Use when:** You want a structured quality assessment of a single AI output across factuality / instruction-following / coherence / completeness.

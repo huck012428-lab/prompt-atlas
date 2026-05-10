@@ -59,8 +59,11 @@ Then re-run validate and build_index.
 
 ## When you write a new card
 
-Start from `templates/prompt-card.md`. Required body sections, in order:
+Start from `templates/prompt-card.md`. The body must open with a
+one-line Chinese 场景 blockquote, then have seven required level-2
+sections, in order:
 
+0. `> 🎯 **场景**：...` (Chinese, one-line blockquote, before all `##` sections)
 1. `## Quick Use`
 2. `## Purpose`
 3. `## Prompt`
@@ -71,7 +74,9 @@ Start from `templates/prompt-card.md`. Required body sections, in order:
 
 Quality bar:
 
-- Quick Use is for non-technical readers. Three lines:
+- 场景 blockquote is for at-a-glance Chinese-reader comprehension. One
+  or two sentences naming the scenario, before all body sections.
+- Quick Use is for non-technical English readers. Three lines:
   "Use when:" / "Fill in:" / "You'll get:". No jargon, no engineering
   caveats — those go in Failure Modes and Tuning Notes.
 - Purpose names the workflow stage (not just "this prompt does X").

@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：agent 跑久了 trajectory 接近 context window 时，把过往压缩成 facts / decisions / dead_ends 结构化 memory。让 agent 接着干，不在"原文回放"上烧 token。
+
 ## Quick Use
 
 **Use when:** Your agent's trajectory is approaching the context window limit and you need to compress earlier history into a structured memory record.

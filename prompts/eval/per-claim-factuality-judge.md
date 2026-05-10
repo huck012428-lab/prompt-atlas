@@ -20,6 +20,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：把 AI 输出拆原子事实，逐条 closed-book 标 true / false / unverifiable / non_factual，输出 factual_precision。适合长文事实核查、长答 QA 评估。和 RAG 的 grounding-checker 互补（一个 closed-book 一个 open-book）。
+
 ## Quick Use
 
 **Use when:** You want fine-grained factuality labels (true / false / unverifiable) for every atomic factual claim in an AI output.

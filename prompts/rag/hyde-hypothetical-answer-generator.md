@@ -17,6 +17,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：HyDE 技术——给 query 生成"假答"用作检索向量，让 embedding 检索的召回更高。生成的假答**不**给用户看，是 retrieval 内部的脚手架。
+
 ## Quick Use
 
 **Use when:** You want to generate a hypothetical answer to embed and use as a search vector (HyDE technique).

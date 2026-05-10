@@ -23,6 +23,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：聚合 N 条独立采样的推理路径，按等价类投票出 consensus answer + agreement_rate（软置信度）。降低单路径方差，适合算式 / 多步 QA 等错误率高的任务。
+
 ## Quick Use
 
 **Use when:** You've sampled N candidate answers to the same question (with temperature) and want to take a majority vote.

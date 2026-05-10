@@ -1,6 +1,6 @@
 ---
 name: prompt-atlas
-description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. 42 cards across 7 directions — RAG, Agent, RLHF, SFT, Multimodal, Chain-of-Thought, Evaluation. Triggers when the user asks for a prompt for retrieval scoring, multi-hop QA, query rewriting, HyDE, citation auditing, hallucination detection, chunk summarization for retrieval, agent planning / tool-call schema, agent reflection, tool-call repair, plan-and-execute, trajectory memory compression, multi-agent sub-task delegation, pairwise preference labeling, pointwise reward scoring, constitutional critique-and-revise, best-of-N selection, red-team prompt generation, instruction set augmentation, self-instruct, SFT data filtering, SFT response generation, structured image captioning, visual question answering, VLM caption verification, OCR structured extraction, chart and table extraction, structured reasoning, least-to-most decomposition, self-consistency aggregation, verify-then-finalize, tree-of-thoughts, LLM-as-judge rubrics, reference-based judging, per-claim factuality, pointwise quality scoring, safety output classification, or position-bias-aware pairwise judging. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
+description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. 47 cards across 8 directions — RAG, Agent, RLHF, SFT, Multimodal, Chain-of-Thought, Evaluation, Code. Triggers when the user asks for a prompt for retrieval scoring, multi-hop QA, query rewriting, HyDE, citation auditing, hallucination detection, chunk summarization, context compression, agent planning / tool-call schema, agent reflection, tool-call repair, plan-and-execute, trajectory memory compression, multi-agent sub-task delegation, pairwise preference labeling, pointwise reward scoring, constitutional critique-and-revise, best-of-N selection, red-team prompt generation, instruction augmentation, self-instruct, SFT data filtering, SFT response generation, multi-turn conversation generation, few-shot example selection, structured image captioning, visual question answering, VLM caption verification, OCR structured extraction, chart and table extraction, structured reasoning, least-to-most decomposition, self-consistency aggregation, verify-then-finalize, tree-of-thoughts, LLM-as-judge rubrics, reference-based judging, per-claim factuality, pointwise quality scoring, safety output classification, position-bias-aware pairwise judging, multi-turn dialogue judging, code review, test case generation, code explanation, code evaluation, or refactor suggestion. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
 ---
 
 # prompt-atlas
@@ -36,6 +36,9 @@ under:
 - **Evaluation**: LLM-as-judge rubrics, reference-based judging,
   per-claim factuality, pointwise quality scoring, safety output
   classification, position-bias-aware pairwise judging.
+- **Code**: structured code review, test case generation, audience-
+  calibrated code explanation, code evaluation judging, refactor
+  suggestions.
 
 Do **not** invoke for: jailbreaks, safety-bypass prompts, or attempts
 to extract proprietary internal reasoning traces. See
@@ -139,6 +142,18 @@ User describes...                                                               
 "judge a multi-turn dialogue (per-turn + conversation-level scoring)"              → eval/multi-turn-dialogue-judge
 ```
 
+### Code
+
+```
+User describes...                                                                  → Card
+─────────────────────────────────────────────────────────────────────────────────────────
+"structured code review with per-dimension findings (correctness/security/etc.)"   → code/code-review-checklist
+"generate test cases for a function with happy/edge/error coverage"                → code/test-case-generator
+"explain code at a specific audience level (junior dev / PM / domain expert)"      → code/code-explanation-generator
+"judge whether candidate code fulfills a task (with optional gold + tests)"        → code/code-eval-judge
+"suggest concrete refactors with rationale and impact (single goal per call)"      → code/refactor-suggestion
+```
+
 For tasks not covered above:
 
 1. Check `INDEX.md` (auto-generated) for the full card list grouped by
@@ -222,7 +237,7 @@ content.
 
 ```
 prompt-atlas/
-├── prompts/<direction>/<slug>.md     ← the cards (42 total)
+├── prompts/<direction>/<slug>.md     ← the cards (47 total)
 ├── templates/prompt-card.md          ← canonical template
 ├── docs/SCHEMA.md                    ← frontmatter + tag vocabulary
 ├── docs/SAFETY.md                    ← policy

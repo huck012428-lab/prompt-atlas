@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：agent loop 中段元反思——每 N 步插一次，让 agent 退一步看"我是不是还在轨道上"，决定 continue / switch_strategy / escalate。打破 stuck loop 的关键。
+
 ## Quick Use
 
 **Use when:** Your agent has taken several steps and you want a meta-level "are we on track" check before continuing.

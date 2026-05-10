@@ -51,6 +51,35 @@ schema changes accumulate).
   smaller question-tailored context with verbatim spans and source
   citations.
 
+#### New `code` direction (5 cards)
+- `code/code-review-checklist` — structured per-dimension code review
+  (correctness / readability / performance / security / testability /
+  idiomaticity) with severity-tagged findings and approve / request-
+  changes / comment-only verdict.
+- `code/test-case-generator` — generate test specs for a function with
+  explicit happy-path / edge-case / error-handling / boundary /
+  regression coverage and per-test priority.
+- `code/code-explanation-generator` — audience-calibrated code
+  explanation (junior / senior / non-technical / domain-expert) with
+  key concepts and likely confusion points.
+- `code/code-eval-judge` — judge candidate code against a task
+  description, optional reference, and optional test cases. Strict
+  security gate: security<=2 cannot pass.
+- `code/refactor-suggestion` — concrete refactor suggestions oriented
+  toward a single goal (readability / performance / testability /
+  modularity / type_safety) with behavior-change-risk and
+  test-breakage-risk estimates.
+
+Vocabulary additions: `code` direction; tags `code-review`,
+`test-generation`, `documentation`.
+
+#### Bilingual at-a-glance (`场景` blockquote)
+- Every card now opens with a single-line Chinese `> 🎯 **场景**：...`
+  blockquote summarizing the use case. Aimed at non-English readers
+  who need to identify "is this card for me?" in one glance.
+  Retrofitted to all 47 cards, added to the template, documented in
+  SCHEMA / CLAUDE / CONTRIBUTING.
+
 #### Repository organization
 - Root directory tidied: `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md`
   moved to `.github/` (GitHub auto-detects from there);

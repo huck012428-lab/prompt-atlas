@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：单输出按**自定义维度**打分（不是固定 rubric）+ 自报置信度 + trustworthy_aggregate 信号。适合有产品自定义 dimensions（toxicity-safe、on-brand-voice 等）的 dashboard / leaderboard 场景。
+
 ## Quick Use
 
 **Use when:** You want to score a single AI output on YOUR custom dimensions (not a fixed rubric) with self-reported confidence.

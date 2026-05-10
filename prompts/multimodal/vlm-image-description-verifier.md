@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：VLM 评估——审计候选 caption 是否真的匹配图，把 caption 拆原子 claim 后逐条标 supported / contradicted / unverifiable，输出 hallucination_rate 和 missing_elements。需要 vision 模型。
+
 ## Quick Use
 
 **Use when:** You have a candidate image caption and want to audit which claims actually match the image.

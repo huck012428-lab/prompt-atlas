@@ -24,7 +24,10 @@ frontmatter followed by a markdown body with a fixed set of sections.
 
 ## Required body sections
 
-The body must contain these seven level-2 headings, in this order:
+The body must open with a one-line Chinese 场景 blockquote
+(`> 🎯 **场景**：...`) so non-English readers can identify the card's
+purpose at a glance. Then the body must contain these seven level-2
+headings, in this order:
 
 1. `## Quick Use`
 2. `## Purpose`
@@ -34,9 +37,13 @@ The body must contain these seven level-2 headings, in this order:
 6. `## Tuning Notes`
 7. `## Changelog`
 
-`## Quick Use` is the beginner-facing summary at the top of every card — a
-one-sentence "use when", a plain-English description of what to fill into
-each variable, and a plain-English description of what the card returns.
+`> 🎯 **场景**：...` (Chinese) is the at-a-glance summary for non-English
+readers — one or two sentences naming the workflow scenario this card is
+for. Visible without scrolling.
+
+`## Quick Use` is the beginner-facing English summary — a one-sentence
+"use when", a plain-English description of what to fill into each
+variable, and a plain-English description of what the card returns.
 Aimed at users who only need the gist; the deeper sections below it are
 where the engineering experience lives.
 
@@ -61,7 +68,7 @@ the prose listing below is a human-readable mirror. **Keep them in sync** when
 adding values.
 
 ### Directions
-`rag`, `agent`, `rlhf`, `sft`, `multimodal`, `cot`, `eval`
+`rag`, `agent`, `rlhf`, `sft`, `multimodal`, `cot`, `eval`, `code`
 
 ### Status
 `stable`, `experimental`, `deprecated`
@@ -94,6 +101,9 @@ CoT:
 
 Eval:
 `llm-judge`, `rubric`, `comparative`, `holistic`, `factuality`, `coherence`
+
+Code:
+`code-review`, `test-generation`, `documentation`
 
 ### Audience
 `llm-trainer`, `ai-pm`, `prompt-engineer`, `eval-team`, `rlhf-team`, `sft-team`,

@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：检索后压缩——把多个 retrieved passage 压成针对问题的小上下文（保留 verbatim spans + citation），省 token 同时让模型注意力更聚焦，避免"lost in the middle"。
+
 ## Quick Use
 
 **Use when:** Your retriever returns more text than fits comfortably in the LLM's context window, or you want to focus the model's attention on the spans actually relevant to the question.

@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：把 1 条种子指令改写成 N 个变体——同任务、不同表面（措辞、register、长度提示）。SFT 数据从手工种子规模化扩展的纵向维度。
+
 ## Quick Use
 
 **Use when:** You want to rewrite ONE instruction into N variants that preserve the underlying task but vary surface form, register, or style.

@@ -48,6 +48,7 @@ Cards are organised by direction:
 | **Multimodal**   | VLM caption verification against actual images<br/>VLM caption 与图像内容核对 |
 | **CoT**          | Structured reasoning with rationale summaries<br/>结构化推理 + rationale 摘要 |
 | **Eval**         | LLM-as-judge rubrics for open-ended outputs<br/>开放式输出的 LLM-as-judge rubric |
+| **Code**         | Code review checklist, test generation, code explanation, refactor suggestions, code-eval judge<br/>结构化 code review、测试生成、代码解释、重构建议、代码评估 |
 
 The complete catalog lives in [`INDEX.md`](INDEX.md) (auto-generated).
 
@@ -131,6 +132,16 @@ Maps a goal to the card to use. New here? See
 | Aggregate N sampled paths into a consensus answer · 把 N 条采样路径聚合成共识答案 | [`cot/self-consistency-aggregator`](prompts/cot/self-consistency-aggregator.md) |
 | Draft + verify before committing to a final answer · 先 draft 再 verify 再交答案 | [`cot/verify-then-finalize`](prompts/cot/verify-then-finalize.md) |
 | Explore multiple branches in parallel and prune (tree-of-thoughts) · 多分支并行探索 + 剪枝 | [`cot/tree-of-thoughts`](prompts/cot/tree-of-thoughts.md) |
+
+### Work with code · 处理代码
+
+| Goal · 我想做                                                          | Card · 用这张卡 |
+|------------------------------------------------------------------------|-----------------|
+| Structured code review with per-dimension findings · 按维度做结构化 code review | [`code/code-review-checklist`](prompts/code/code-review-checklist.md) |
+| Generate test cases for a function · 给函数生成测试用例 | [`code/test-case-generator`](prompts/code/test-case-generator.md) |
+| Explain code at a specific audience level · 按受众层级解释代码 | [`code/code-explanation-generator`](prompts/code/code-explanation-generator.md) |
+| Judge whether candidate code fulfills a task · 评估候选代码是否完成任务 | [`code/code-eval-judge`](prompts/code/code-eval-judge.md) |
+| Suggest concrete refactors with rationale · 提结构化重构建议 | [`code/refactor-suggestion`](prompts/code/refactor-suggestion.md) |
 
 ## How to use it / 如何使用
 
@@ -258,12 +269,12 @@ clarity.
 ## Status / 当前状态
 
 **v0.1.0** — first public release with 32 Prompt Cards. Library has
-since grown to **42 Prompt Cards across all 7 directions** (post-v0.1
+since grown to **47 Prompt Cards across all 7 directions** (post-v0.1
 additions tracked in [`CHANGELOG.md`](docs/CHANGELOG.md)).
 See [`ROADMAP.md`](docs/ROADMAP.md) for what's planned next. Pull
 requests welcome.
 
 **v0.1.0** —— 首个公开版本，32 张 Prompt Card。后续已扩到
-**42 张，覆盖全部 7 个方向**（v0.1 之后的新卡见
+**47 张，覆盖 8 个方向**（v0.1 之后的新卡见
 [`CHANGELOG.md`](docs/CHANGELOG.md)）。后续计划见
 [`ROADMAP.md`](docs/ROADMAP.md)，欢迎 PR。

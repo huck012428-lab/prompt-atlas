@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：把一个复合 query 拆成 3-5 个 focused 子查询，提升 RAG 检索召回率。在检索之前用，每个子查询独立检索后再融合。
+
 ## Quick Use
 
 **Use when:** You want to split a single complex query into focused sub-queries before retrieval.

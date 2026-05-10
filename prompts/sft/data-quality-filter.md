@@ -23,6 +23,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：训练前 SFT 数据过滤——给 (instruction, response) 对按 5 个维度（清晰度、正确性、完整性、风格、安全）打分，决定 keep / review / drop。SFT 数据 pipeline 的最后一道闸。
+
 ## Quick Use
 
 **Use when:** You have candidate (instruction, response) SFT pairs and want to filter them by quality before training.

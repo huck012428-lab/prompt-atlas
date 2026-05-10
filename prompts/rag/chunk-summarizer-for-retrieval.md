@@ -20,6 +20,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：给长文档块生成 retrieval-friendly 摘要 + 关键词 + 假设性问题，作为 RAG 索引的额外通道。建索引时跑一次，每次查询都受益。
+
 ## Quick Use
 
 **Use when:** You're building a RAG index and want to store a search-friendly summary alongside (or instead of) the raw chunk text.

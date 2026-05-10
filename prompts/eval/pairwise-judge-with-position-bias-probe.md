@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：高质量 pairwise judging——双调用协议，A/B 跑一遍再 B/A 跑一遍，按 position_bias_protocol 合并结果。能把 10-25% 的 position bias 压到 5-10%。适合关键 RLHF 数据建设、benchmark eval。
+
 ## Quick Use
 
 **Use when:** You're running pairwise LLM-as-judge evaluation and want to detect / control for the well-known position bias (judge prefers whichever response is shown first).

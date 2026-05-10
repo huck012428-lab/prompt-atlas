@@ -33,12 +33,15 @@ in [`docs/SCHEMA.md`](../docs/SCHEMA.md). Specifically:
 1. **Frontmatter** — all required fields present, all enum values from the
    controlled vocabulary, `id` matches file path, `direction` matches
    parent folder.
-2. **Body sections** — seven level-2 headings in this exact order:
+2. **场景 blockquote** — body must open with a one-line Chinese
+   `> 🎯 **场景**：...` summary so non-English readers can identify
+   the card's purpose at a glance.
+3. **Body sections** — seven level-2 headings in this exact order:
    `## Quick Use`, `## Purpose`, `## Prompt`, `## Example`,
    `## Failure Modes`, `## Tuning Notes`, `## Changelog`.
-3. **Variables** — every `{{placeholder}}` in the prompt body matches a
+4. **Variables** — every `{{placeholder}}` in the prompt body matches a
    `name` in the `variables` frontmatter list.
-4. **Concrete examples** — `## Example` must show real input and real
+5. **Concrete examples** — `## Example` must show real input and real
    expected output, not `<...>` placeholders.
 
 ## Quality bar
@@ -46,10 +49,15 @@ in [`docs/SCHEMA.md`](../docs/SCHEMA.md). Specifically:
 Cards that pass validation but read as unfinished will be asked for
 revisions. The bar:
 
-- **Quick Use** is the beginner-facing summary at the top. Three lines:
-  "Use when:" (one short clause), "Fill in:" (variables in plain English),
-  "You'll get:" (output in plain English; say "Output is JSON" so
-  non-technical readers know what they're looking at). No jargon here.
+- **场景** blockquote (Chinese, one line at the very top) is for at-a-glance
+  comprehension by Chinese readers. One or two sentences naming the
+  scenario this card is for. Don't translate the entire card — just
+  this orientation line.
+- **Quick Use** is the beginner-facing English summary at the top. Three
+  lines: "Use when:" (one short clause), "Fill in:" (variables in plain
+  English), "You'll get:" (output in plain English; say "Output is JSON"
+  so non-technical readers know what they're looking at). No jargon
+  here.
 - **Purpose** names the workflow stage, not just "this prompt does X".
   Bad: "scores stuff". Good: "Used during RAG eval-set construction to
   produce per-passage relevance labels for offline retriever metrics."

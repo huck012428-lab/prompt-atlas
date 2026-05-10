@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：单输出按 harm taxonomy 分类 + 决定 allow / review / block。**防御性**评估工具——不是 jailbreak。适合产品防御层、RLHF refusal 数据建设、安全 benchmark。
+
 ## Quick Use
 
 **Use when:** You want to classify whether an AI output should be allowed, reviewed, or blocked along an explicit harm taxonomy (defensive use only).

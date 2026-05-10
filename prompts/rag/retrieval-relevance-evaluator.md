@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：评估检索到的 passage 与 query 的相关性，0/1/2 三档打分 + 理由 + 支撑短语。RAG eval-set 构建和 retriever 质量评估的标配。
+
 ## Quick Use
 
 **Use when:** You want to score whether a retrieved passage is relevant to a search query.

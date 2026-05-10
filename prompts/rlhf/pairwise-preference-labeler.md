@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：A/B 偏好打分——给同一 prompt 的两个回答按 helpful / harmless / honest 三维度打分并选 winner。RLHF 数据建设的主力，reward model 训练数据的标准来源。
+
 ## Quick Use
 
 **Use when:** You have two AI responses to the same prompt and want a preference label across helpful / harmless / honest dimensions.

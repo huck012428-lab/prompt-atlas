@@ -23,6 +23,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：给指令生成回答（SFT pair 的 target 半段）。专为训练数据优化——无 filler 寒暄、不编造特定事实、带 would_refuse 安全 flag 和 self_assessment 信号。和 instruction 生成卡协同形成完整数据 pipeline。
+
 ## Quick Use
 
 **Use when:** You need to produce the response half of an SFT pair given an instruction.

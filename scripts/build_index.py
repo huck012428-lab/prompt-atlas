@@ -21,7 +21,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 PROMPTS_DIR = REPO_ROOT / "prompts"
 INDEX_PATH = REPO_ROOT / "INDEX.md"
 
-DIRECTION_ORDER = ["rag", "agent", "rlhf", "sft", "multimodal", "cot", "eval"]
+DIRECTION_ORDER = ["rag", "agent", "rlhf", "sft", "multimodal", "cot", "eval", "code"]
 DIRECTION_LABEL = {
     "rag": "RAG",
     "agent": "Agent",
@@ -30,6 +30,7 @@ DIRECTION_LABEL = {
     "multimodal": "Multimodal",
     "cot": "Chain-of-Thought",
     "eval": "Evaluation",
+    "code": "Code",
 }
 
 

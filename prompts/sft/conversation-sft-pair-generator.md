@@ -23,6 +23,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：多轮对话 SFT 数据生成——chat 模型主流形态。每条对话带 multi-turn 行为标签（context 回看、纠错、话题转移、澄清问题等），便于按行为类型采样训练 batch。
+
 ## Quick Use
 
 **Use when:** You're training a chat model and need multi-turn conversation SFT data, not just single-turn QA pairs.

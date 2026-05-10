@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：给 predictable goal（结构能预知的任务）一次性产出完整线性计划 + 依赖图。和 ReAct 互补——ReAct 适合每步根据观察决定，本卡适合"看一眼就知道大致走哪几步"。
+
 ## Quick Use
 
 **Use when:** Your agent's goal is predictable enough to plan upfront instead of step-by-step (linear dependencies, known sub-problems).

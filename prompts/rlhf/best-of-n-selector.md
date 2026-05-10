@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：N 选 1——给同一 prompt 的 N 个候选回答排序选最佳。两种用法：(1) inference 时 best-of-N 提质量；(2) RLHF 数据建设——一次 N 个候选可衍生 N-1 对 pairwise。
+
 ## Quick Use
 
 **Use when:** You have N candidate responses to the same prompt and need to pick the best (for inference-time best-of-N or for RLHF preference data).

@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：闭合答题对 gold 打分——短答 QA、数学、结构化抽取这类有标准答案的任务。给 correctness / completeness / style_fidelity 三档打分 + match/partial/mismatch verdict。
+
 ## Quick Use
 
 **Use when:** You're scoring closed-form outputs (short-answer QA, math, structured extraction) against a known gold answer.

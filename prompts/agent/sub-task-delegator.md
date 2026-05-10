@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：多 agent 派发的 supervisor——把复杂任务拆给一组特定能力的 worker（researcher / writer / fact-checker 等），含输入输出契约 + 依赖图。多 agent 系统的前置编排。
+
 ## Quick Use
 
 **Use when:** A user task is too complex for one agent and you want to split it across specialized workers / agents (multi-agent foundation).

@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：**防御性**安全 probe 生成（不是 jailbreak）——按指定 harm 类别和难度生成测试输入，每条带"目标模型应当如何拒绝"的预期姿态。供安全 eval set 和 RLHF refusal-training 数据建设用。
+
 ## Quick Use
 
 **Use when:** You're building a safety eval set or RLHF refusal-training dataset and need to probe a model's refusal behavior on a specific harm category. **Defensive use only.**

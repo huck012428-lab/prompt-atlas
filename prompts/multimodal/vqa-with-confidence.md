@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：视觉问答 + grounding 区域 + 置信度。回答前先判断"图能不能答这个问题"，能答时指出图里哪一块支持答案、置信度多高。VQA benchmark + 票据问答 + 辅助阅读场景。需要 vision 模型。
+
 ## Quick Use
 
 **Use when:** You want to answer a question about an image AND know whether the image actually supports the answer (with grounding region and confidence).

@@ -17,6 +17,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：单路径推理——把推理拆成 sub_steps，输出最终答案 + rationale_summary（user-facing 摘要，不是 hidden CoT）。审计友好、符合主流闭源模型政策。CoT 方向的基线卡。
+
 ## Quick Use
 
 **Use when:** You want the model to decompose its reasoning into named sub-steps and emit a summary rationale (not hidden chain-of-thought).

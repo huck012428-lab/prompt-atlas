@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：审计某条 citation 是否真支持它声称的 claim（fully / partially / not supported）。RAG citation 质量评估的核心，能抓出"假引用"——citation 本身真实但内容不支持 claim。
+
 ## Quick Use
 
 **Use when:** You want to audit whether a citation actually supports the claim it was attached to.

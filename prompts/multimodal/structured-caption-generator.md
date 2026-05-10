@@ -20,6 +20,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：把图描述拆成结构化字段（scene_type / objects / action / salient text 等），不是自由 caption。适合 alt-text 系统、商品库索引、内容审核流水。需要 vision 模型。
+
 ## Quick Use
 
 **Use when:** You want a structured caption for an image — discrete fields like scene, subject, objects, action — instead of free-form text.

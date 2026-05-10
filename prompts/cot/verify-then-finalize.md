@@ -20,6 +20,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：单轮内"先 draft 再 verify 再 finalize"。verify 阶段对算术 / 边界 case / 矛盾 / 未支撑 claim / 约束做显式 per-check 验证。适合易错任务（数学、单位换算、多步逻辑）。
+
 ## Quick Use
 
 **Use when:** A task is error-prone (math, units, edge cases) and you want a draft + explicit verification before committing to the final answer.

@@ -23,6 +23,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：从文档图（票据 / 发票 / 表单 / ID）按指定 schema 抽取类型化字段——不是裸 OCR，是 OCR + 结构化 + 类型转换。每个字段带置信度，trustworthy_for_automation 标记是否可放心自动化。需要 vision 模型。
+
 ## Quick Use
 
 **Use when:** You want to extract a fixed set of typed fields from a document image (receipt, invoice, form, ID page).

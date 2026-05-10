@@ -20,6 +20,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：复杂题分解——拆成"严格更简单"的子问题链，每个子问题可用前面的答案作已知条件。适合 compositional 任务（多步算式、多跳 QA、链式推理）。
+
 ## Quick Use
 
 **Use when:** A complex problem can be solved by breaking it into a chain of strictly easier sub-problems where each can use earlier answers.

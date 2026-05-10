@@ -23,6 +23,8 @@ variables:
     required: false
 ---
 
+> 🎯 **场景**：ReAct loop 单步——每一步出一个 reasoning_summary + tool_call（或 final_answer）的 JSON。替代旧式 "Thought: Action:" 字符串格式，让 agent 轨迹可解析、可记录、可重放。
+
 ## Quick Use
 
 **Use when:** You want an agent to emit one strict-JSON tool call per step in a ReAct loop, with a visible reasoning summary.

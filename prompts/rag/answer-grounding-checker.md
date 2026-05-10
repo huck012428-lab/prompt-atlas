@@ -23,6 +23,8 @@ variables:
     required: true
 ---
 
+> 🎯 **场景**：把 RAG 答案拆成原子 claim，逐条对照 retrieved context 标 supported / unsupported / contradicted。检测幻觉 + 算 hallucination_rate。
+
 ## Quick Use
 
 **Use when:** You want to detect hallucinations in a RAG answer by checking each claim against the retrieved context.

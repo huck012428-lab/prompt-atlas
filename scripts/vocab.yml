@@ -23,6 +23,7 @@ directions:
   - multimodal
   - cot
   - eval
+  - code
 
 status:
   - stable
@@ -98,6 +99,10 @@ tags:
     - holistic
     - factuality
     - coherence
+  code:
+    - code-review
+    - test-generation
+    - documentation
 
 audiences:
   - llm-trainer
