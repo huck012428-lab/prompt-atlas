@@ -19,9 +19,9 @@ variables:
 
 ## Quick Use
 
-**Use when:** <one short clause: what problem this card solves, in plain English>.
-**Fill in:** `{{var1}}` = <plain English description>; `{{var2}}` = <plain English description>.
-**You'll get:** <output described in plain English; mention "Output is JSON" or "Output is plain text" so non-technical users know what to expect>.
+**Use when:** `<one short clause: what problem this card solves, in plain English>`.
+**Fill in:** `{{var1}}` = `<plain English description>`; `{{var2}}` = `<plain English description>`.
+**You'll get:** `<output described in plain English; mention "Output is JSON" or "Output is plain text" so non-technical users know what to expect>`.
 
 ## Purpose
 
@@ -71,9 +71,9 @@ example_var: "<concrete sample input>"
 数量的敏感性、以及和此卡相关的产品场景。Keep this section practical —
 this is where reusers save time.
 
-- 模型差异：<observed differences across model tiers>
-- 调优旋钮：<which knobs matter most>
-- 场景适配：<how to bend the card for adjacent use cases>
+- 模型差异：`<observed differences across model tiers>`
+- 调优旋钮：`<which knobs matter most>`
+- 场景适配：`<how to bend the card for adjacent use cases>`
 
 ## Changelog
 

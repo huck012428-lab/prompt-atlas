@@ -8,6 +8,12 @@ venv/
 env/
 .pytest_cache/
 
+# Node / VitePress
+node_modules/
+.vitepress/dist/
+.vitepress/cache/
+*.log
+
 # Editor / OS
 .DS_Store
 .idea/

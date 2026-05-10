@@ -7,6 +7,11 @@ teams, model evaluation teams, and AI application builders.
 一个精选、带版本、可检索的生产级 Prompt 库，面向 LLM trainer、AI 产品
 经理、Prompt 工程师、RLHF / SFT 数据团队、模型评估团队、AI 应用开发者。
 
+> 🌐 **Live site / 在线站点**:
+> [huck012428-lab.github.io/prompt-atlas](https://huck012428-lab.github.io/prompt-atlas/)
+> — searchable, sidebar navigation, copy-button on every prompt block.
+> 网页版含全站搜索、侧边栏导航、prompt 一键复制。
+
 This is **not** a "awesome prompts" snippet collection. Every entry is a
 **Prompt Card**: a reusable work asset with metadata, variables,
 examples, documented failure modes, and tuning notes.
