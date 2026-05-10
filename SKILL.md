@@ -1,57 +1,133 @@
 ---
 name: prompt-atlas
-description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. Triggers when the user asks for a prompt for RAG, Agent / tool use, RLHF preference labeling, SFT data augmentation, multimodal / VLM evaluation, structured chain-of-thought, or LLM-as-judge evaluation rubrics. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
+description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. 28 cards across 7 directions — RAG, Agent, RLHF, SFT, Multimodal, Chain-of-Thought, Evaluation. Triggers when the user asks for a prompt for retrieval scoring, multi-hop QA, query rewriting, HyDE, citation auditing, hallucination detection, agent planning / tool-call schema, agent reflection, tool-call repair, plan-and-execute, trajectory memory compression, pairwise preference labeling, pointwise reward scoring, constitutional critique-and-revise, instruction set augmentation, self-instruct, SFT data filtering, structured image captioning, visual question answering, VLM caption verification, structured reasoning, least-to-most decomposition, self-consistency aggregation, LLM-as-judge rubrics, reference-based judging, per-claim factuality, pointwise quality scoring, or safety output classification. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
 ---
 
 # prompt-atlas
 
-A curated library of reusable Prompt Cards organized by technical direction.
-Each card carries metadata, variables, examples, failure modes, and tuning
-notes — they are work assets, not snippets.
+A curated library of 28 reusable Prompt Cards organized by technical
+direction. Each card carries metadata, variables, examples, failure
+modes, and tuning notes — they are work assets, not snippets, and each
+explicitly states when to use a sibling card instead.
 
 ## When to invoke this skill
 
-Trigger when the user describes a **prompt-engineering task** in any of the
-covered directions, or asks for "a prompt for X" where X falls under:
+Trigger when the user describes a **prompt-engineering task** in any of
+the covered directions, or asks for "a prompt for X" where X falls
+under:
 
-- Retrieval-augmented generation (RAG): retrieval scoring, multi-hop eval
-  synthesis, query rewriting, grounding checks.
-- Agents: planning loops, tool-call schemas, ReAct trajectories.
-- RLHF: pairwise preference labeling, reward-model data, HHH evaluation.
-- SFT: instruction-set augmentation, seed expansion, persona / style control.
-- Multimodal: VLM caption verification, image-grounding factuality.
-- Structured chain-of-thought: visible reasoning summaries, sub-step
-  decomposition (without exposing hidden traces).
-- Evaluation: LLM-as-judge rubrics, holistic / per-criterion scoring.
+- **RAG**: retrieval scoring, multi-hop eval synthesis, query
+  rewriting, HyDE-style hypothetical answers, citation faithfulness,
+  answer hallucination detection.
+- **Agent**: ReAct planning, plan-and-execute, tool-call repair,
+  trajectory reflection, long-context memory compression.
+- **RLHF**: pairwise preference labeling, pointwise reward scoring,
+  constitutional critique-and-revise.
+- **SFT**: instruction-set augmentation, self-instruct generation,
+  (instruction, response) quality filtering.
+- **Multimodal**: structured image captioning, VLM caption
+  verification, visual question answering with grounding.
+- **Chain-of-Thought**: structured reasoning with rationale summary,
+  least-to-most decomposition, self-consistency aggregation.
+- **Evaluation**: LLM-as-judge rubrics, reference-based judging,
+  per-claim factuality, pointwise quality scoring, safety output
+  classification.
 
-Do **not** invoke for: jailbreaks, safety-bypass prompts, or attempts to
-extract proprietary internal reasoning traces. See `docs/SAFETY.md`.
+Do **not** invoke for: jailbreaks, safety-bypass prompts, or attempts
+to extract proprietary internal reasoning traces. See
+`docs/SAFETY.md`.
 
 ## Routing decision tree
 
-Map the user's described task to the closest direction, then to the closest
-card. When in doubt between two cards, read both and pick the one whose
-**Purpose** section best matches.
+Map the user's described task to the closest direction, then to the
+closest card. When in doubt between two cards, read both and pick the
+one whose **Purpose** section best matches; the **Tuning Notes** of
+each card also explicitly compare it to its siblings.
+
+### RAG
 
 ```
-User describes...                                        → Direction → Card
-─────────────────────────────────────────────────────────────────────────
-"score whether a passage is relevant to a query"         → rag       → rag/retrieval-relevance-evaluator
-"build a multi-hop QA eval set from passages"            → rag       → rag/multihop-eval-synthesizer
-"agent loop with tool calls / strict JSON schema"        → agent     → agent/react-planner-with-tool-schema
-"label A vs B preference (HHH)"                          → rlhf      → rlhf/pairwise-preference-labeler
-"expand SFT seeds into diverse rewrites"                 → sft       → sft/instruction-variant-expander
-"verify a VLM caption against the actual image"          → multimodal → multimodal/vlm-image-description-verifier
-"structured reasoning with a rationale summary"          → cot       → cot/structured-reasoning-with-rationale-summary
-"LLM-as-judge rubric for open-ended outputs"             → eval      → eval/llm-judge-rubric-open-ended
+User describes...                                                                  → Card
+─────────────────────────────────────────────────────────────────────────────────────────
+"score whether a retrieved passage is relevant to a query"                         → rag/retrieval-relevance-evaluator
+"build a multi-hop QA eval question from two passages"                             → rag/multihop-eval-synthesizer
+"decompose / rewrite a user query into focused sub-queries before retrieval"       → rag/query-rewriting-decomposition
+"generate a hypothetical answer to embed as a search query (HyDE)"                 → rag/hyde-hypothetical-answer-generator
+"audit whether a cited span actually supports the claim it was attached to"        → rag/citation-faithfulness-scorer
+"detect hallucinations in a RAG answer (per-claim grounding against context)"      → rag/answer-grounding-checker
+```
+
+### Agent
+
+```
+User describes...                                                                  → Card
+─────────────────────────────────────────────────────────────────────────────────────────
+"agent loop, ReAct-style, every step emits a JSON tool call"                       → agent/react-planner-with-tool-schema
+"produce a complete plan upfront for a goal whose structure is predictable"        → agent/plan-and-execute-planner
+"fix a malformed tool call given the validation error message"                     → agent/tool-call-repair
+"step back and reflect on whether the trajectory is on track"                      → agent/self-critique-reflection
+"compress a long agent trajectory into structured memory before context overflow"  → agent/long-context-memory-summarizer
+```
+
+### RLHF
+
+```
+User describes...                                                                  → Card
+─────────────────────────────────────────────────────────────────────────────────────────
+"label A vs B preference (HHH dimensions) for reward model data"                   → rlhf/pairwise-preference-labeler
+"produce a single-response scalar reward signal (no pair available)"               → rlhf/pointwise-reward-scorer
+"critique a response against a constitution and produce a revised version (CAI)"   → rlhf/constitutional-critique-revise
+```
+
+### SFT
+
+```
+User describes...                                                                  → Card
+─────────────────────────────────────────────────────────────────────────────────────────
+"rewrite ONE instruction into N diverse variants (same task)"                      → sft/instruction-variant-expander
+"generate NEW instructions in the same task family as seed examples"               → sft/self-instruct-from-seed
+"filter (instruction, response) SFT pairs by quality before training"              → sft/data-quality-filter
+```
+
+### Multimodal
+
+```
+User describes...                                                                  → Card
+─────────────────────────────────────────────────────────────────────────────────────────
+"verify whether a candidate caption matches the image (per-claim audit)"           → multimodal/vlm-image-description-verifier
+"generate a structured caption (scene, objects, action, salient text)"             → multimodal/structured-caption-generator
+"answer a question about an image with grounding region + confidence"              → multimodal/vqa-with-confidence
+```
+
+### Chain-of-Thought
+
+```
+User describes...                                                                  → Card
+─────────────────────────────────────────────────────────────────────────────────────────
+"single-pass structured reasoning with sub-steps and a visible rationale"          → cot/structured-reasoning-with-rationale-summary
+"decompose a complex compositional problem into easier sub-problems in order"      → cot/least-to-most-decomposition
+"aggregate N independently-sampled reasoning paths into a consensus answer"        → cot/self-consistency-aggregator
+```
+
+### Evaluation
+
+```
+User describes...                                                                  → Card
+─────────────────────────────────────────────────────────────────────────────────────────
+"LLM-as-judge rubric for open-ended outputs, fixed 4-dimension rubric"             → eval/llm-judge-rubric-open-ended
+"score a model output against a gold reference (closed-form benchmark)"            → eval/reference-based-judge
+"decompose an output into atomic claims and label each true/false/unverifiable"    → eval/per-claim-factuality-judge
+"score one output on custom dimensions with self-reported confidence"              → eval/pointwise-quality-scorer
+"classify a single output along a harm taxonomy (allow / review / block)"          → eval/safety-output-classifier
 ```
 
 For tasks not covered above:
 
 1. Check `INDEX.md` (auto-generated) for the full card list grouped by
    direction and tag.
-2. If still no match, the closest direction's existing card may be adaptable
-   — read its **Tuning Notes** section for adjacent use cases.
+2. If still no match, the closest direction's existing cards may be
+   adaptable — read their **Tuning Notes** sections for adjacent use
+   cases.
 3. If no card fits, tell the user and suggest opening an issue using
    `.github/ISSUE_TEMPLATE/new-prompt-card.yml` to request the card.
 
@@ -61,15 +137,34 @@ When the user's words don't directly map to a direction, search by tag
 intent:
 
 - "score / rate / judge / evaluate" → `scoring`, `llm-judge`, `rubric`
-- "label / annotate" → `preference-labeling`, `classification`
-- "synthesize / generate examples" → `generation`, `synthesis`,
-  `seed-expansion`, `data-augmentation`
-- "multi-step / decompose / plan" → `planning`, `decomposition`,
-  `decomposition-cot`, `react`
-- "verify / check / ground" → `factuality`, `grounding`, `self-check`
-- "multi-hop / cross-passage" → `multi-hop`
-- "tool / function call" → `tool-use`, `structured-output`
-- "image / picture / visual" → `vision`, `image-description`, `vlm-eval`
+- "label / annotate / classify" → `preference-labeling`,
+  `classification`, `pairwise`
+- "synthesize / generate examples / new instructions" → `generation`,
+  `synthesis`, `seed-expansion`, `data-augmentation`
+- "multi-step / decompose / break down / plan" → `planning`,
+  `decomposition`, `decomposition-cot`, `react`
+- "verify / check / ground / fact-check" → `factuality`, `grounding`,
+  `self-check`, `citation`
+- "multi-hop / cross-passage / chain" → `multi-hop`
+- "tool / function call / repair / schema" → `tool-use`,
+  `structured-output`
+- "image / picture / visual / VLM" → `vision`, `image-description`,
+  `vlm-eval`
+- "reflection / step back / look at trajectory" → `reflection`,
+  `self-check`
+- "memory / compress / summarize trajectory / resume later" → `memory`,
+  `rationale-summary`
+- "constitution / critique-revise / harmless rewrite" → `harmlessness`,
+  `helpfulness`, `honesty`
+- "filter / quality / drop bad data" → `scoring`, `classification`,
+  `instruction-tuning`
+- "safety / harm / block / red-team / harmlessness" → `safety`,
+  `harmlessness`
+- "rationale / reasoning / sub-steps / least-to-most / self-consistency"
+  → `structured-reasoning`, `rationale-summary`, `decomposition-cot`,
+  `self-check`
+- "reward model / RM training / preference data" → `reward-modeling`,
+  `preference-labeling`, `pairwise`
 
 The full controlled tag vocabulary is in `docs/SCHEMA.md`.
 
@@ -77,28 +172,39 @@ The full controlled tag vocabulary is in `docs/SCHEMA.md`.
 
 1. **Read the entire card.** Frontmatter + all six sections. Skipping
    `Failure Modes` and `Tuning Notes` is the most common cause of
-   unsatisfying results — those sections are where the experience lives.
+   unsatisfying results — those sections are where the experience
+   lives.
 2. **Match the user's variables** to the card's `variables` block. If a
    required variable is missing, ask the user for it.
-3. **Substitute** `{{variable}}` placeholders in the card's prompt body.
-4. **Match the model class** to the card's `models` field. If the user is
-   on a model class the card has not been validated for, mention this and
-   adjust per `Tuning Notes`.
+3. **Substitute** `{{variable}}` placeholders in the card's prompt
+   body.
+4. **Match the model class** to the card's `models` field. If the user
+   is on a model class the card has not been validated for, mention
+   this and adjust per `Tuning Notes`.
 5. **Surface the output schema.** If the card's `output_schema` is
-   `structured-json`, ensure the calling environment can parse JSON; if
-   the user is in a freeform chat, propose using a JSON-mode call.
+   `structured-json`, ensure the calling environment can parse JSON;
+   if the user is in a freeform chat, propose using a JSON-mode call.
+6. **Check the sibling cards.** Most cards' Tuning Notes name an
+   adjacent card and explain when to switch (e.g.
+   `eval/reference-based-judge` says use it for closed-form,
+   `eval/llm-judge-rubric-open-ended` for open-ended). Verify the
+   chosen card is the right sibling for the user's actual task.
 
 ## Safety
 
-Every card is reviewed against `docs/SAFETY.md`. If a user request would
-require violating that policy (jailbreaks, hidden-CoT extraction,
+Every card is reviewed against `docs/SAFETY.md`. If a user request
+would require violating that policy (jailbreaks, hidden-CoT extraction,
 harm-enabling content), do not adapt a card to fit — refuse and explain.
+
+The `eval/safety-output-classifier` card is itself defensive (it
+detects harm to filter or label); do not invert it to generate harmful
+content.
 
 ## Repository layout (reference)
 
 ```
 prompt-atlas/
-├── prompts/<direction>/<slug>.md     ← the cards
+├── prompts/<direction>/<slug>.md     ← the cards (28 total)
 ├── templates/prompt-card.md          ← canonical template
 ├── docs/SCHEMA.md                    ← frontmatter + tag vocabulary
 ├── docs/SAFETY.md                    ← policy
