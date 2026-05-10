@@ -18,47 +18,32 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PROMPTS_DIR = REPO_ROOT / "prompts"
+VOCAB_FILE = Path(__file__).resolve().parent / "vocab.yml"
 
-DIRECTIONS = {"rag", "agent", "rlhf", "sft", "multimodal", "cot", "eval"}
-STATUS = {"stable", "experimental", "deprecated"}
-LANGUAGES = {"en"}
-INPUT_SCHEMAS = {"text", "structured", "multimodal"}
-OUTPUT_SCHEMAS = {"text", "structured-json", "numeric-score", "label"}
-LICENSES = {"CC-BY-4.0"}
 
+def _load_vocab() -> dict:
+    """Load the controlled vocabulary from scripts/vocab.yml.
+
+    Single source of truth for all enum-valued frontmatter fields.
+    """
+    with VOCAB_FILE.open("r", encoding="utf-8") as fh:
+        return yaml.safe_load(fh)
+
+
+_VOCAB = _load_vocab()
+
+DIRECTIONS = set(_VOCAB["directions"])
+STATUS = set(_VOCAB["status"])
+LANGUAGES = set(_VOCAB["languages"])
+INPUT_SCHEMAS = set(_VOCAB["input_schemas"])
+OUTPUT_SCHEMAS = set(_VOCAB["output_schemas"])
+LICENSES = set(_VOCAB["licenses"])
+AUDIENCES = set(_VOCAB["audiences"])
+MODELS = set(_VOCAB["models"])
 TAGS = {
-    # general
-    "scoring", "classification", "extraction", "generation", "eval-set",
-    "safety", "structured-output", "data-augmentation",
-    # rag
-    "retrieval", "ranking", "citation", "query-rewriting", "grounding",
-    "multi-hop", "synthesis",
-    # agent
-    "planning", "tool-use", "react", "reflection", "memory", "decomposition",
-    # rlhf
-    "preference-labeling", "reward-modeling", "pairwise", "harmlessness",
-    "helpfulness", "honesty",
-    # sft
-    "instruction-tuning", "seed-expansion", "persona", "style-control",
-    # multimodal
-    "vision", "image-description", "ocr", "video", "vlm-eval", "audio",
-    # cot
-    "structured-reasoning", "rationale-summary", "self-check",
-    "decomposition-cot",
-    # eval
-    "llm-judge", "rubric", "comparative", "holistic", "factuality",
-    "coherence",
-}
-
-AUDIENCES = {
-    "llm-trainer", "ai-pm", "prompt-engineer", "eval-team",
-    "rlhf-team", "sft-team", "app-builder",
-}
-
-MODELS = {
-    "generic", "frontier-closed", "mid-tier-closed",
-    "open-source-large", "open-source-small",
-    "vision-language", "reasoning-model",
+    tag
+    for group in _VOCAB["tags"].values()
+    for tag in group
 }
 
 REQUIRED_FRONTMATTER = [

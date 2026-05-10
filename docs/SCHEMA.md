@@ -48,6 +48,11 @@ must start with a letter).
 
 ## Controlled vocabulary
 
+The canonical source for all enum-valued fields is
+[`scripts/vocab.yml`](../scripts/vocab.yml). `validate.py` reads it directly;
+the prose listing below is a human-readable mirror. **Keep them in sync** when
+adding values.
+
 ### Directions
 `rag`, `agent`, `rlhf`, `sft`, `multimodal`, `cot`, `eval`
 
@@ -72,10 +77,10 @@ RLHF:
 `helpfulness`, `honesty`
 
 SFT:
-`instruction-tuning`, `seed-expansion`, `persona`, `style-control`
+`instruction-tuning`, `seed-expansion`
 
 Multimodal:
-`vision`, `image-description`, `ocr`, `video`, `vlm-eval`, `audio`
+`vision`, `image-description`, `ocr`, `vlm-eval`
 
 CoT:
 `structured-reasoning`, `rationale-summary`, `self-check`, `decomposition-cot`
@@ -103,9 +108,10 @@ Tier labels, not specific model names (so cards age well):
 
 Adding a new tag/audience/model label is a deliberate change. Open a PR that:
 
-1. Updates the lists in this file.
-2. Updates the matching constants in `scripts/validate.py`.
+1. Adds the value to [`scripts/vocab.yml`](../scripts/vocab.yml).
+2. Adds the same value to the prose listing in this file.
 3. Justifies the addition in the PR description (which existing tag did not fit?).
 
-Drift between this file and `validate.py` is a bug — CI will catch it because
-validation fails on unknown values.
+`vocab.yml` is the source of truth. Drift between it and this file is a docs
+bug; drift between either and an actual card is caught by CI (validation fails
+on unknown values).

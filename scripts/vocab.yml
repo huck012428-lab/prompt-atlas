@@ -1,0 +1,118 @@
+# prompt-atlas controlled vocabulary
+# ==================================
+# Canonical source for all enum-valued frontmatter fields. Modified by:
+#   - scripts/validate.py reads this directly to enforce schema.
+#   - docs/SCHEMA.md is the human-readable mirror (prose listing of the
+#     same values). Keep them in sync — adding to one without the other
+#     is a contributor mistake the CONTRIBUTING.md guide explicitly
+#     warns about.
+#
+# When you add a new value here, you MUST also:
+#   1. Update the matching list in docs/SCHEMA.md.
+#   2. In your PR description, justify why the existing values did not
+#      fit (which value did you consider, and why didn't it work?).
+#
+# Removing a value here is allowed only if no card under prompts/ uses
+# it. validate.py will catch any orphaned cards on next run.
+
+directions:
+  - rag
+  - agent
+  - rlhf
+  - sft
+  - multimodal
+  - cot
+  - eval
+
+status:
+  - stable
+  - experimental
+  - deprecated
+
+languages:
+  - en
+
+input_schemas:
+  - text
+  - structured
+  - multimodal
+
+output_schemas:
+  - text
+  - structured-json
+  - numeric-score
+  - label
+
+licenses:
+  - CC-BY-4.0
+
+tags:
+  general:
+    - scoring
+    - classification
+    - extraction
+    - generation
+    - eval-set
+    - safety
+    - structured-output
+    - data-augmentation
+  rag:
+    - retrieval
+    - ranking
+    - citation
+    - query-rewriting
+    - grounding
+    - multi-hop
+    - synthesis
+  agent:
+    - planning
+    - tool-use
+    - react
+    - reflection
+    - memory
+    - decomposition
+  rlhf:
+    - preference-labeling
+    - reward-modeling
+    - pairwise
+    - harmlessness
+    - helpfulness
+    - honesty
+  sft:
+    - instruction-tuning
+    - seed-expansion
+  multimodal:
+    - vision
+    - image-description
+    - ocr
+    - vlm-eval
+  cot:
+    - structured-reasoning
+    - rationale-summary
+    - self-check
+    - decomposition-cot
+  eval:
+    - llm-judge
+    - rubric
+    - comparative
+    - holistic
+    - factuality
+    - coherence
+
+audiences:
+  - llm-trainer
+  - ai-pm
+  - prompt-engineer
+  - eval-team
+  - rlhf-team
+  - sft-team
+  - app-builder
+
+models:
+  - generic
+  - frontier-closed
+  - mid-tier-closed
+  - open-source-large
+  - open-source-small
+  - vision-language
+  - reasoning-model

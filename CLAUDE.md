@@ -28,14 +28,20 @@ manual `INDEX.md` edits, that is a bug — discard them and re-run the build.
 
 ## When you add a new tag, audience, or model label
 
-The vocabulary lives in two places that must stay in sync:
+The canonical vocabulary lives in `scripts/vocab.yml`. `validate.py`
+reads it directly. The prose listing in `docs/SCHEMA.md` is a
+human-readable mirror — keep it in sync when you change the YAML.
 
-1. `docs/SCHEMA.md` — the prose listing for humans
-2. `scripts/validate.py` — the constants used by validation
+When you touch the vocabulary:
 
-Drift between them means CI either fails on valid cards or accepts invalid
-ones. When you touch one, touch the other in the same commit, and justify
-the addition in the PR description (which existing label did not fit?).
+1. Edit `scripts/vocab.yml` (the source of truth).
+2. Edit the matching prose listing in `docs/SCHEMA.md`.
+3. Justify the addition in the PR description (which existing label did
+   not fit?).
+
+CI catches drift between `vocab.yml` and actual cards on next run
+(validation fails on unknown values, or fails on cards using values
+the YAML no longer contains).
 
 ## When you add a new direction
 

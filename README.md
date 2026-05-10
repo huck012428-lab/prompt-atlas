@@ -173,8 +173,10 @@ clarity.
 
 ## Status / 当前状态
 
-v0.1 — seed release with Prompt Cards across all 7 directions. Roadmap
-and open issues live on GitHub. Pull requests welcome.
+**v0.1.0** — first public release. 32 Prompt Cards across all 7
+directions. See [`CHANGELOG.md`](CHANGELOG.md) for details and
+[`ROADMAP.md`](ROADMAP.md) for what's next. Pull requests welcome.
 
-v0.1——种子版本，涵盖全部 7 个方向。Roadmap 与 issues 在 GitHub 上维护，
-欢迎 PR。
+**v0.1.0** —— 首个公开版本。32 张 Prompt Card，覆盖全部 7 个方向。
+变更详见 [`CHANGELOG.md`](CHANGELOG.md)，后续计划见
+[`ROADMAP.md`](ROADMAP.md)，欢迎 PR。

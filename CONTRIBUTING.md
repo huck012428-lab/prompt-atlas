@@ -62,14 +62,18 @@ revisions. The bar:
 
 If your card needs a tag / audience / model label that does not exist:
 
-1. Add it to the appropriate list in [`docs/SCHEMA.md`](docs/SCHEMA.md).
-2. Add the same string to the matching constant in
-   [`scripts/validate.py`](scripts/validate.py).
+1. Add it to [`scripts/vocab.yml`](scripts/vocab.yml) (canonical source —
+   `validate.py` reads this directly).
+2. Add the same value to the prose listing in
+   [`docs/SCHEMA.md`](docs/SCHEMA.md) so humans browsing the docs see it.
 3. In your PR description, justify the addition: which existing label did
    you consider and why didn't it fit?
 
 Vocabulary changes are scrutinized — drift is the failure mode of
-controlled-vocabulary systems.
+controlled-vocabulary systems. CI catches drift between `vocab.yml` and
+actual cards (validation fails on unknown values); drift between
+`vocab.yml` and `docs/SCHEMA.md` is a docs bug that reviewers should
+catch.
 
 ## What we will NOT accept
 
