@@ -78,6 +78,8 @@ Maps a goal to the card to use. New here? See
 | Compare baseline vs candidate outputs and detect regressions · 检测候选版本是否退步 | [`eval/regression-detector`](prompts/eval/regression-detector.md) |
 | Diagnose LLM judge biases (length / position / format) · 诊断 LLM judge 自身偏见 | [`eval/judge-bias-probe`](prompts/eval/judge-bias-probe.md) |
 | Check confidence calibration (predicted vs actual accuracy) · 检查置信度是否校准 | [`eval/calibration-checker`](prompts/eval/calibration-checker.md) |
+| Bootstrap a small human eval study (rubric + calibration + analysis) · 设计小规模 human eval 研究 | [`eval/human-eval-bootstrap`](prompts/eval/human-eval-bootstrap.md) |
+| Build a multi-benchmark leaderboard with weighting · 多 benchmark 加权 leaderboard | [`eval/leaderboard-builder`](prompts/eval/leaderboard-builder.md) |
 | Diagnose refusal calibration (over / under / correct) · 诊断模型拒绝是否校准 | [`rlhf/refusal-calibration-probe`](prompts/rlhf/refusal-calibration-probe.md) |
 | Generate iterative DPO pairs targeting a specific principle · 按原则生成 DPO 偏好对 | [`rlhf/iterative-dpo-pair-generator`](prompts/rlhf/iterative-dpo-pair-generator.md) |
 | Score whether a response matches a defined persona / brand voice · 评估回答是否符合人设 | [`rlhf/persona-consistency-judge`](prompts/rlhf/persona-consistency-judge.md) |
@@ -103,6 +105,8 @@ Maps a goal to the card to use. New here? See
 | Resolve a chat follow-up into a standalone retrieval query · 多轮 RAG 的代词消解器 | [`rag/conversational-query-resolver`](prompts/rag/conversational-query-resolver.md) |
 | Synthesize an answer from multiple sources, surfacing conflicts · 多源综合答案 + 冲突识别 | [`rag/multi-source-aggregator`](prompts/rag/multi-source-aggregator.md) |
 | Build structured output (table / list / record) from RAG sources · RAG 结构化输出（表/列表/字段记录） | [`rag/structured-rag-output-builder`](prompts/rag/structured-rag-output-builder.md) |
+| Fuse multiple sub-query retrieval results into one ranked set · 多子查询检索结果融合 | [`rag/query-fusion`](prompts/rag/query-fusion.md) |
+| Resolve time-relative phrases into concrete time bounds · 时间相对短语解析为具体时间范围 | [`rag/time-aware-retrieval-rewriter`](prompts/rag/time-aware-retrieval-rewriter.md) |
 
 ### Build / debug an agent · 搭建和调试 Agent
 
@@ -119,6 +123,8 @@ Maps a goal to the card to use. New here? See
 | Decide retry / abort / escalate on operation failure · 操作失败时决定重试/放弃/升级 | [`agent/error-recovery-strategy`](prompts/agent/error-recovery-strategy.md) |
 | Plan agent execution within token / dollar budget · 在预算约束下规划 agent 执行 | [`agent/budget-aware-planner`](prompts/agent/budget-aware-planner.md) |
 | Compress verbose tool output before adding to context · 把 tool 输出压缩后再进 context | [`agent/tool-output-summarizer`](prompts/agent/tool-output-summarizer.md) |
+| Reconcile conflicting outputs from multiple sub-agents · 多 agent 冲突调解 | [`agent/multi-agent-conflict-resolver`](prompts/agent/multi-agent-conflict-resolver.md) |
+| Translate raw API response into a user-readable answer · API 响应翻译给用户 | [`agent/api-result-translator`](prompts/agent/api-result-translator.md) |
 
 ### Generate / filter training data · 训练数据生成与过滤
 
@@ -133,6 +139,10 @@ Maps a goal to the card to use. New here? See
 | Generate adversarial probes for safety evaluation (defensive) · 生成防御性安全评估探针 | [`rlhf/red-team-prompt-generator`](prompts/rlhf/red-team-prompt-generator.md) |
 | Generate multi-turn conversation SFT data · 生成多轮对话 SFT 数据 | [`sft/conversation-sft-pair-generator`](prompts/sft/conversation-sft-pair-generator.md) |
 | Pick best K few-shot demonstrations from a candidate pool · 从样本池为目标 query 选最好的 K 个示例 | [`sft/few-shot-example-selector`](prompts/sft/few-shot-example-selector.md) |
+| Detect reward hacking patterns in RLHF responses · 检测 RLHF 训练后 reward gaming 失败模式 | [`rlhf/reward-hacking-detector`](prompts/rlhf/reward-hacking-detector.md) |
+| Audit whether a preference label's rationale justifies the pick · 审计偏好标签的理由是否站得住 | [`rlhf/preference-rationalization-judge`](prompts/rlhf/preference-rationalization-judge.md) |
+| Generate code-specific SFT pairs · 生成 code SFT 训练对 | [`sft/code-sft-pair-generator`](prompts/sft/code-sft-pair-generator.md) |
+| Find semantic near-duplicates in instruction set · 找语义相似指令做去重 | [`sft/instruction-deduplicator`](prompts/sft/instruction-deduplicator.md) |
 
 ### Work with images · 处理图像
 
@@ -148,6 +158,8 @@ Maps a goal to the card to use. New here? See
 | Convert a UI screenshot into a component spec · UI 截图转组件树 spec | [`multimodal/screenshot-to-spec`](prompts/multimodal/screenshot-to-spec.md) |
 | Classify image into custom user-defined categories · 自定义类别图像分类 | [`multimodal/image-classification`](prompts/multimodal/image-classification.md) |
 | Transcribe handwriting with per-word confidence · 手写文字转录 + 字级置信度 | [`multimodal/handwriting-transcriber`](prompts/multimodal/handwriting-transcriber.md) |
+| Reverse-engineer edit instruction from before/after pair · 前后图反推编辑指令 | [`multimodal/image-edit-instruction-generator`](prompts/multimodal/image-edit-instruction-generator.md) |
+| Compare two images and explain similarities / differences · 双图对比解释 | [`multimodal/image-comparison-explainer`](prompts/multimodal/image-comparison-explainer.md) |
 
 ### Improve reasoning quality · 提升推理质量
 
@@ -163,6 +175,8 @@ Maps a goal to the card to use. New here? See
 | Reasoning with explicit per-step uncertainty · 明示每步不确定度的推理 | [`cot/uncertainty-quantification`](prompts/cot/uncertainty-quantification.md) |
 | Citation-grounded reasoning (every claim must cite source) · 每条事实必须引用 source 的推理 | [`cot/citation-grounded-reasoning`](prompts/cot/citation-grounded-reasoning.md) |
 | Contrast against intentionally-wrong reasoning · 对照错误推理路径的反向自洽 | [`cot/contrastive-self-consistency`](prompts/cot/contrastive-self-consistency.md) |
+| Process external criticism (accept / correct / reject) · 处理外部批评的 self-correction 协议 | [`cot/self-correction-protocol`](prompts/cot/self-correction-protocol.md) |
+| Generate a meta-prompt for a class of tasks · 给一类任务生成可复用的 meta-prompt | [`cot/meta-prompt-generator`](prompts/cot/meta-prompt-generator.md) |
 
 ### Work with code · 处理代码
 
@@ -178,8 +192,9 @@ Maps a goal to the card to use. New here? See
 | Summarize git diff into structured PR description · git diff 转结构化 PR description | [`code/code-summary-for-pr`](prompts/code/code-summary-for-pr.md) |
 | Plan major version migration grounded in actual code · 大版本迁移阶段化规划 | [`code/migration-plan-generator`](prompts/code/migration-plan-generator.md) |
 | Analyze impact of changing a function / API signature · 评估函数 / API 签名改动的影响范围 | [`code/dependency-impact-analyzer`](prompts/code/dependency-impact-analyzer.md) |
-
-## How to use it / 如何使用
+| Explain a stack trace / error to a target audience · 按受众解释错误信息 | [`code/error-message-explainer`](prompts/code/error-message-explainer.md) |
+| Generate a commit message from a git diff · 从 diff 生成 commit message | [`code/commit-message-generator`](prompts/code/commit-message-generator.md) |
+| Review API design (REST / GraphQL / gRPC) for ergonomics · API 设计评审 | [`code/api-design-reviewer`](prompts/code/api-design-reviewer.md) |
 
 ### As a GitHub repository / 作为 GitHub 仓库
 
@@ -305,12 +320,12 @@ clarity.
 ## Status / 当前状态
 
 **v0.1.0** — first public release with 32 Prompt Cards. Library has
-since grown to **83 Prompt Cards across all 7 directions** (post-v0.1
+since grown to **100 Prompt Cards across all 7 directions** (post-v0.1
 additions tracked in [`CHANGELOG.md`](docs/CHANGELOG.md)).
 See [`ROADMAP.md`](docs/ROADMAP.md) for what's planned next. Pull
 requests welcome.
 
 **v0.1.0** —— 首个公开版本，32 张 Prompt Card。后续已扩到
-**83 张，覆盖 8 个方向**（v0.1 之后的新卡见
+**100 张，覆盖 8 个方向**（v0.1 之后的新卡见
 [`CHANGELOG.md`](docs/CHANGELOG.md)）。后续计划见
 [`ROADMAP.md`](docs/ROADMAP.md)，欢迎 PR。

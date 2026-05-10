@@ -172,6 +172,55 @@ cot 8, rlhf 8, code 7. Total 68.
 Per-direction: rag 11, eval 11, agent 11, sft 10, multimodal 10,
 cot 10, rlhf 10, code 10. Total 83. All directions ≥10.
 
+#### Batch 3 to 100 (17 final cards)
+- rag/query-fusion — fuse N sub-query retrieval results into one
+  ranked deduplicated set.
+- rag/time-aware-retrieval-rewriter — resolve "last month" /
+  "recent" into concrete time bounds for the retriever.
+- agent/multi-agent-conflict-resolver — reconcile conflicting
+  outputs from multiple sub-agents (factual / value-based /
+  methodological / scope).
+- agent/api-result-translator — turn raw API JSON into a
+  user-readable answer in a chosen style.
+- rlhf/reward-hacking-detector — detect sycophancy / verbosity /
+  format gaming / qualifier flooding in post-RLHF responses.
+- rlhf/preference-rationalization-judge — audit whether a
+  preference label's rationale actually justifies the pick.
+- sft/code-sft-pair-generator — generate code SFT pairs at
+  controlled difficulty in a target language with test sketch.
+- sft/instruction-deduplicator — find semantic near-duplicates
+  (paraphrases) in an instruction set.
+- multimodal/image-edit-instruction-generator — reverse-engineer
+  the edit instruction from a before/after image pair.
+- multimodal/image-comparison-explainer — structured similarity /
+  difference explanation between two images.
+- cot/self-correction-protocol — process external criticism with
+  accept / correct / reject decision.
+- cot/meta-prompt-generator — generate a reusable meta-prompt for
+  a class of tasks from description + examples.
+- eval/human-eval-bootstrap — design a small human eval study
+  (rubric + annotator instructions + calibration + analysis).
+- eval/leaderboard-builder — multi-benchmark leaderboard with
+  weighted aggregation, differentiator detection, and saturation
+  flagging.
+- code/error-message-explainer — explain stack traces / errors
+  calibrated to junior_dev / senior_dev / non_technical audiences.
+- code/commit-message-generator — generate commit messages from
+  git diff in conventional / imperative / verbose styles.
+- code/api-design-reviewer — review API design (REST / GraphQL /
+  gRPC) on consistency / ergonomics / evolvability / security /
+  performance.
+
+Per-direction: rag 13, eval 13, agent 13, code 13, sft 12,
+multimodal 12, cot 12, rlhf 12. Total 100. All directions ≥12.
+
+## [0.2.0] — 2026-05-10
+
+100-card milestone release. The post-v0.1.0 polish + 3 batches of
+expansion (15 + 15 + 17) brought the library from 32 cards in v0.1.0
+to 100 cards across 8 directions, with all "Unreleased" content
+above moved to this release line.
+
 #### Bilingual at-a-glance (`场景` blockquote)
 - Every card now opens with a single-line Chinese `> 🎯 **场景**：...`
   blockquote summarizing the use case. Aimed at non-English readers
