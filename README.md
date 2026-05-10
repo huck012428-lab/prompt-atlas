@@ -75,7 +75,13 @@ Maps a goal to the card to use. New here? See
 | Pairwise judge with position-bias detection (two-call protocol) · 带位置偏置检测的 pairwise judge（双向调用） | [`eval/pairwise-judge-with-position-bias-probe`](prompts/eval/pairwise-judge-with-position-bias-probe.md) |
 | Judge a multi-turn dialogue (per-turn + conversation-level) · 多轮对话评估 | [`eval/multi-turn-dialogue-judge`](prompts/eval/multi-turn-dialogue-judge.md) |
 | Generate a domain-specific rubric with level anchors · 给具体任务自动生成定制化评分 rubric | [`eval/rubric-generator`](prompts/eval/rubric-generator.md) |
+| Compare baseline vs candidate outputs and detect regressions · 检测候选版本是否退步 | [`eval/regression-detector`](prompts/eval/regression-detector.md) |
+| Diagnose LLM judge biases (length / position / format) · 诊断 LLM judge 自身偏见 | [`eval/judge-bias-probe`](prompts/eval/judge-bias-probe.md) |
 | Diagnose refusal calibration (over / under / correct) · 诊断模型拒绝是否校准 | [`rlhf/refusal-calibration-probe`](prompts/rlhf/refusal-calibration-probe.md) |
+| Generate iterative DPO pairs targeting a specific principle · 按原则生成 DPO 偏好对 | [`rlhf/iterative-dpo-pair-generator`](prompts/rlhf/iterative-dpo-pair-generator.md) |
+| Score whether a response matches a defined persona / brand voice · 评估回答是否符合人设 | [`rlhf/persona-consistency-judge`](prompts/rlhf/persona-consistency-judge.md) |
+| Generate response in a defined persona with strictness control · 按人设生成回答（带严格度控制） | [`sft/persona-controlled-response`](prompts/sft/persona-controlled-response.md) |
+| Rewrite text in a target style (formal / casual / specific voice) · 文本改写为目标风格 | [`sft/style-transfer`](prompts/sft/style-transfer.md) |
 
 ### RAG · 检索增强
 
@@ -89,6 +95,8 @@ Maps a goal to the card to use. New here? See
 | Detect hallucinations in a RAG answer · 检测 RAG 答案的幻觉 | [`rag/answer-grounding-checker`](prompts/rag/answer-grounding-checker.md) |
 | Summarize a long document chunk for retrieval indexing · 给长文档块产 search-friendly summary | [`rag/chunk-summarizer-for-retrieval`](prompts/rag/chunk-summarizer-for-retrieval.md) |
 | Compress retrieved passages into a smaller question-tailored context · 把检索结果压缩成针对问题的小上下文 | [`rag/context-compression`](prompts/rag/context-compression.md) |
+| Resolve a chat follow-up into a standalone retrieval query · 多轮 RAG 的代词消解器 | [`rag/conversational-query-resolver`](prompts/rag/conversational-query-resolver.md) |
+| Synthesize an answer from multiple sources, surfacing conflicts · 多源综合答案 + 冲突识别 | [`rag/multi-source-aggregator`](prompts/rag/multi-source-aggregator.md) |
 
 ### Build / debug an agent · 搭建和调试 Agent
 
@@ -101,6 +109,8 @@ Maps a goal to the card to use. New here? See
 | Compress a long agent trajectory into memory · 把长 trajectory 压缩成 memory | [`agent/long-context-memory-summarizer`](prompts/agent/long-context-memory-summarizer.md) |
 | Split a complex task across multiple specialized workers · 把复杂任务派给多个专精 agent | [`agent/sub-task-delegator`](prompts/agent/sub-task-delegator.md) |
 | Decide whether a goal needs clarification, ask one good question · 判断是否要问澄清问题，问一个好问题 | [`agent/clarification-asker`](prompts/agent/clarification-asker.md) |
+| Convert OpenAPI / Swagger spec into agent tool catalog · OpenAPI 自动转 tool catalog | [`agent/api-spec-to-tool-catalog`](prompts/agent/api-spec-to-tool-catalog.md) |
+| Decide retry / abort / escalate on operation failure · 操作失败时决定重试/放弃/升级 | [`agent/error-recovery-strategy`](prompts/agent/error-recovery-strategy.md) |
 
 ### Generate / filter training data · 训练数据生成与过滤
 
@@ -126,6 +136,8 @@ Maps a goal to the card to use. New here? See
 | Extract typed fields from a document image · 从文档图片抽取结构化字段 | [`multimodal/ocr-structured-extraction`](prompts/multimodal/ocr-structured-extraction.md) |
 | Extract data from a chart / plot / table image · 从图表或表格图片抽数据 | [`multimodal/chart-table-extractor`](prompts/multimodal/chart-table-extractor.md) |
 | Analyze a document page's layout (title / body / tables / figures) · 分析文档页面版式结构 | [`multimodal/document-layout-analyzer`](prompts/multimodal/document-layout-analyzer.md) |
+| Extract graph structure from a diagram / flowchart / architecture · 流程图/架构图转结构化数据 | [`multimodal/diagram-to-structured-data`](prompts/multimodal/diagram-to-structured-data.md) |
+| Convert a UI screenshot into a component spec · UI 截图转组件树 spec | [`multimodal/screenshot-to-spec`](prompts/multimodal/screenshot-to-spec.md) |
 
 ### Improve reasoning quality · 提升推理质量
 
@@ -137,6 +149,8 @@ Maps a goal to the card to use. New here? See
 | Draft + verify before committing to a final answer · 先 draft 再 verify 再交答案 | [`cot/verify-then-finalize`](prompts/cot/verify-then-finalize.md) |
 | Explore multiple branches in parallel and prune (tree-of-thoughts) · 多分支并行探索 + 剪枝 | [`cot/tree-of-thoughts`](prompts/cot/tree-of-thoughts.md) |
 | Abstract the question into a principle first, then apply (step-back) · 先抽象到原理再代入具体题 | [`cot/step-back-prompting`](prompts/cot/step-back-prompting.md) |
+| Critique and revise a candidate plan before execution · 执行前对推理 plan critique + 修订 | [`cot/plan-critique-and-revise`](prompts/cot/plan-critique-and-revise.md) |
+| Reasoning with explicit per-step uncertainty · 明示每步不确定度的推理 | [`cot/uncertainty-quantification`](prompts/cot/uncertainty-quantification.md) |
 
 ### Work with code · 处理代码
 
@@ -148,6 +162,7 @@ Maps a goal to the card to use. New here? See
 | Judge whether candidate code fulfills a task · 评估候选代码是否完成任务 | [`code/code-eval-judge`](prompts/code/code-eval-judge.md) |
 | Suggest concrete refactors with rationale · 提结构化重构建议 | [`code/refactor-suggestion`](prompts/code/refactor-suggestion.md) |
 | Translate code from one language to another · 跨语言代码翻译（含 idiom 控制） | [`code/code-translation`](prompts/code/code-translation.md) |
+| Focused security review with CWE-style findings · 按 threat model 做代码安全评审 | [`code/security-review`](prompts/code/security-review.md) |
 
 ## How to use it / 如何使用
 
@@ -275,12 +290,12 @@ clarity.
 ## Status / 当前状态
 
 **v0.1.0** — first public release with 32 Prompt Cards. Library has
-since grown to **53 Prompt Cards across all 7 directions** (post-v0.1
+since grown to **68 Prompt Cards across all 7 directions** (post-v0.1
 additions tracked in [`CHANGELOG.md`](docs/CHANGELOG.md)).
 See [`ROADMAP.md`](docs/ROADMAP.md) for what's planned next. Pull
 requests welcome.
 
 **v0.1.0** —— 首个公开版本，32 张 Prompt Card。后续已扩到
-**53 张，覆盖 8 个方向**（v0.1 之后的新卡见
+**68 张，覆盖 8 个方向**（v0.1 之后的新卡见
 [`CHANGELOG.md`](docs/CHANGELOG.md)）。后续计划见
 [`ROADMAP.md`](docs/ROADMAP.md)，欢迎 PR。

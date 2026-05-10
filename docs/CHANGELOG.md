@@ -94,6 +94,45 @@ Vocabulary additions: `code` direction; tags `code-review`,
 Per-direction now: rag 8, eval 8, agent 7, sft 6, code 6, cot 6,
 multimodal 6, rlhf 6. Total 53. All directions ≥6.
 
+#### Batch expansion to 68 (15 new cards)
+- `rag/conversational-query-resolver` — multi-turn RAG follow-up
+  resolver: turn "what about that?" into a standalone retrieval
+  query.
+- `rag/multi-source-aggregator` — synthesize an answer from multiple
+  retrieved sources, surface conflicts, attribute citations
+  per-claim.
+- `agent/api-spec-to-tool-catalog` — convert OpenAPI / Swagger /
+  JSON Schema into the tool catalog format used by agent loops.
+- `agent/error-recovery-strategy` — decide retry / abort / escalate
+  on operation failure with backoff suggestions.
+- `rlhf/iterative-dpo-pair-generator` — generate (chosen, rejected)
+  DPO pairs targeting one specific behavioral principle, with
+  meaningful_delta and incidental_changes audit fields.
+- `rlhf/persona-consistency-judge` — score whether a response
+  matches a defined persona on multiple dimensions.
+- `sft/persona-controlled-response` — generate responses in a
+  defined persona with strict / balanced / loose strictness.
+- `sft/style-transfer` — rewrite text in a target style with
+  meaning-fidelity controls.
+- `multimodal/diagram-to-structured-data` — extract graph structure
+  (nodes / edges / relations) from diagram images.
+- `multimodal/screenshot-to-spec` — convert UI screenshot into a
+  framework-agnostic component spec.
+- `cot/plan-critique-and-revise` — critique a candidate plan before
+  execution and produce a revised version.
+- `cot/uncertainty-quantification` — reasoning with per-step
+  confidence + evidence-type labels and a final confidence range.
+- `eval/regression-detector` — detect quality regressions of
+  candidate outputs against baseline on specific dimensions.
+- `eval/judge-bias-probe` — diagnose systematic biases (length /
+  position / format / verbosity / self-preference) in an LLM judge.
+- `code/security-review` — focused code security review calibrated
+  to threat model (web_server / data_processor / client_app /
+  library / internal_tool); CWE-style findings.
+
+Per-direction now: rag 10, eval 10, agent 9, sft 8, multimodal 8,
+cot 8, rlhf 8, code 7. Total 68.
+
 #### Bilingual at-a-glance (`场景` blockquote)
 - Every card now opens with a single-line Chinese `> 🎯 **场景**：...`
   blockquote summarizing the use case. Aimed at non-English readers
