@@ -41,6 +41,15 @@ schema changes accumulate).
   branches, evaluate, prune.
 - `eval/pairwise-judge-with-position-bias-probe` — pairwise judge
   with explicit two-call position-bias detection protocol.
+- `sft/conversation-sft-pair-generator` — multi-turn conversation
+  SFT data generator with explicit multi-turn-behavior coverage.
+- `sft/few-shot-example-selector` — pick best K demonstrations from
+  a candidate pool for a target query, ordered for primacy effect.
+- `eval/multi-turn-dialogue-judge` — judge multi-turn dialogues
+  with per-turn and conversation-level scoring.
+- `rag/context-compression` — compress retrieved passages into a
+  smaller question-tailored context with verbatim spans and source
+  citations.
 
 #### Repository organization
 - Root directory tidied: `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md`

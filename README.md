@@ -67,6 +67,7 @@ Maps a goal to the card to use. New here? See
 | Pick the best of N AI responses · 从 N 个回答里选最好的 | [`rlhf/best-of-n-selector`](prompts/rlhf/best-of-n-selector.md) |
 | Label A vs B preference (HHH) · 给 A/B 两个回答打偏好标签 | [`rlhf/pairwise-preference-labeler`](prompts/rlhf/pairwise-preference-labeler.md) |
 | Pairwise judge with position-bias detection (two-call protocol) · 带位置偏置检测的 pairwise judge（双向调用） | [`eval/pairwise-judge-with-position-bias-probe`](prompts/eval/pairwise-judge-with-position-bias-probe.md) |
+| Judge a multi-turn dialogue (per-turn + conversation-level) · 多轮对话评估 | [`eval/multi-turn-dialogue-judge`](prompts/eval/multi-turn-dialogue-judge.md) |
 
 ### RAG · 检索增强
 
@@ -79,6 +80,7 @@ Maps a goal to the card to use. New here? See
 | Audit whether a citation actually supports a claim · 审计 citation 是否真的支持 claim | [`rag/citation-faithfulness-scorer`](prompts/rag/citation-faithfulness-scorer.md) |
 | Detect hallucinations in a RAG answer · 检测 RAG 答案的幻觉 | [`rag/answer-grounding-checker`](prompts/rag/answer-grounding-checker.md) |
 | Summarize a long document chunk for retrieval indexing · 给长文档块产 search-friendly summary | [`rag/chunk-summarizer-for-retrieval`](prompts/rag/chunk-summarizer-for-retrieval.md) |
+| Compress retrieved passages into a smaller question-tailored context · 把检索结果压缩成针对问题的小上下文 | [`rag/context-compression`](prompts/rag/context-compression.md) |
 
 ### Build / debug an agent · 搭建和调试 Agent
 
@@ -102,6 +104,8 @@ Maps a goal to the card to use. New here? See
 | Produce scalar reward for one response · 给单回答打 reward 分 | [`rlhf/pointwise-reward-scorer`](prompts/rlhf/pointwise-reward-scorer.md) |
 | Critique a response against a constitution and revise · 按 constitution 批评 + 重写 | [`rlhf/constitutional-critique-revise`](prompts/rlhf/constitutional-critique-revise.md) |
 | Generate adversarial probes for safety evaluation (defensive) · 生成防御性安全评估探针 | [`rlhf/red-team-prompt-generator`](prompts/rlhf/red-team-prompt-generator.md) |
+| Generate multi-turn conversation SFT data · 生成多轮对话 SFT 数据 | [`sft/conversation-sft-pair-generator`](prompts/sft/conversation-sft-pair-generator.md) |
+| Pick best K few-shot demonstrations from a candidate pool · 从样本池为目标 query 选最好的 K 个示例 | [`sft/few-shot-example-selector`](prompts/sft/few-shot-example-selector.md) |
 
 ### Work with images · 处理图像
 
@@ -249,12 +253,12 @@ clarity.
 ## Status / 当前状态
 
 **v0.1.0** — first public release with 32 Prompt Cards. Library has
-since grown to **38 Prompt Cards across all 7 directions** (post-v0.1
+since grown to **42 Prompt Cards across all 7 directions** (post-v0.1
 additions tracked in [`CHANGELOG.md`](docs/CHANGELOG.md)).
 See [`ROADMAP.md`](docs/ROADMAP.md) for what's planned next. Pull
 requests welcome.
 
 **v0.1.0** —— 首个公开版本，32 张 Prompt Card。后续已扩到
-**38 张，覆盖全部 7 个方向**（v0.1 之后的新卡见
+**42 张，覆盖全部 7 个方向**（v0.1 之后的新卡见
 [`CHANGELOG.md`](docs/CHANGELOG.md)）。后续计划见
 [`ROADMAP.md`](docs/ROADMAP.md)，欢迎 PR。

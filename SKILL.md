@@ -1,6 +1,6 @@
 ---
 name: prompt-atlas
-description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. 38 cards across 7 directions — RAG, Agent, RLHF, SFT, Multimodal, Chain-of-Thought, Evaluation. Triggers when the user asks for a prompt for retrieval scoring, multi-hop QA, query rewriting, HyDE, citation auditing, hallucination detection, chunk summarization for retrieval, agent planning / tool-call schema, agent reflection, tool-call repair, plan-and-execute, trajectory memory compression, multi-agent sub-task delegation, pairwise preference labeling, pointwise reward scoring, constitutional critique-and-revise, best-of-N selection, red-team prompt generation, instruction set augmentation, self-instruct, SFT data filtering, SFT response generation, structured image captioning, visual question answering, VLM caption verification, OCR structured extraction, chart and table extraction, structured reasoning, least-to-most decomposition, self-consistency aggregation, verify-then-finalize, tree-of-thoughts, LLM-as-judge rubrics, reference-based judging, per-claim factuality, pointwise quality scoring, safety output classification, or position-bias-aware pairwise judging. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
+description: A curated, versioned, searchable library of production-grade prompts for LLM trainers, AI product managers, and evaluation teams. 42 cards across 7 directions — RAG, Agent, RLHF, SFT, Multimodal, Chain-of-Thought, Evaluation. Triggers when the user asks for a prompt for retrieval scoring, multi-hop QA, query rewriting, HyDE, citation auditing, hallucination detection, chunk summarization for retrieval, agent planning / tool-call schema, agent reflection, tool-call repair, plan-and-execute, trajectory memory compression, multi-agent sub-task delegation, pairwise preference labeling, pointwise reward scoring, constitutional critique-and-revise, best-of-N selection, red-team prompt generation, instruction set augmentation, self-instruct, SFT data filtering, SFT response generation, structured image captioning, visual question answering, VLM caption verification, OCR structured extraction, chart and table extraction, structured reasoning, least-to-most decomposition, self-consistency aggregation, verify-then-finalize, tree-of-thoughts, LLM-as-judge rubrics, reference-based judging, per-claim factuality, pointwise quality scoring, safety output classification, or position-bias-aware pairwise judging. Use to locate and adapt a Prompt Card rather than writing prompts from scratch.
 ---
 
 # prompt-atlas
@@ -60,6 +60,7 @@ User describes...                                                               
 "audit whether a cited span actually supports the claim it was attached to"        → rag/citation-faithfulness-scorer
 "detect hallucinations in a RAG answer (per-claim grounding against context)"      → rag/answer-grounding-checker
 "summarize a long document chunk for retrieval indexing"                           → rag/chunk-summarizer-for-retrieval
+"compress retrieved passages into a smaller question-tailored context"             → rag/context-compression
 ```
 
 ### Agent
@@ -96,6 +97,8 @@ User describes...                                                               
 "generate NEW instructions in the same task family as seed examples"               → sft/self-instruct-from-seed
 "filter (instruction, response) SFT pairs by quality before training"              → sft/data-quality-filter
 "generate the response half of an SFT pair given an instruction"                   → sft/response-generator
+"generate multi-turn conversation SFT data (chat training)"                        → sft/conversation-sft-pair-generator
+"select best K few-shot demonstrations from a candidate pool for a query"          → sft/few-shot-example-selector
 ```
 
 ### Multimodal
@@ -133,6 +136,7 @@ User describes...                                                               
 "score one output on custom dimensions with self-reported confidence"              → eval/pointwise-quality-scorer
 "classify a single output along a harm taxonomy (allow / review / block)"          → eval/safety-output-classifier
 "pairwise judge with explicit position-bias detection (two-call protocol)"         → eval/pairwise-judge-with-position-bias-probe
+"judge a multi-turn dialogue (per-turn + conversation-level scoring)"              → eval/multi-turn-dialogue-judge
 ```
 
 For tasks not covered above:
@@ -218,7 +222,7 @@ content.
 
 ```
 prompt-atlas/
-├── prompts/<direction>/<slug>.md     ← the cards (38 total)
+├── prompts/<direction>/<slug>.md     ← the cards (42 total)
 ├── templates/prompt-card.md          ← canonical template
 ├── docs/SCHEMA.md                    ← frontmatter + tag vocabulary
 ├── docs/SAFETY.md                    ← policy
