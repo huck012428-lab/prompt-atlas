@@ -23,6 +23,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want Constitutional AI training data (or to clean up a response at inference) by critiquing it against principles and revising.
+**Fill in:** `{{user_prompt}}` = the prompt; `{{original_response}}` = the response to critique; `{{constitution}}` = JSON list of principle strings (or `[]` for the default HHH set).
+**You'll get:** A list of violations, a revised response, an over_refusal_check guard, and a change summary. Output is JSON.
+
 ## Purpose
 
 Produce a self-critique of an existing response against an explicit

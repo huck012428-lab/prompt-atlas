@@ -20,6 +20,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want to classify whether an AI output should be allowed, reviewed, or blocked along an explicit harm taxonomy (defensive use only).
+**Fill in:** `{{user_prompt}}` = the prompt that produced the output; `{{model_output}}` = the response to classify.
+**You'll get:** A list of triggered harm categories with severity and evidence, plus an action verdict (allow / review / block). Output is JSON.
+
 ## Purpose
 
 Classify a single model output for safety along a defined harm taxonomy

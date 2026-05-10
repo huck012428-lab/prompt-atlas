@@ -20,6 +20,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want to answer a question about an image AND know whether the image actually supports the answer (with grounding region and confidence).
+**Fill in:** `{{image}}` = the image; `{{question}}` = the question to answer.
+**You'll get:** An answer (or `answerable_from_image: false`), the supporting region, salient features, and a high/medium/low confidence. Output is JSON. Requires a vision-language model.
+
 ## Purpose
 
 Answer a question about an image and report whether the image actually

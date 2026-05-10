@@ -20,6 +20,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** A complex problem can be solved by breaking it into a chain of strictly easier sub-problems where each can use earlier answers.
+**Fill in:** `{{complex_question}}` = the original complex question; `{{max_subproblems}}` = a small number, typically 2 to 5.
+**You'll get:** An ordered list of sub-problems each with its answer, why it's easier, and dependency edges, plus the final answer. Output is JSON.
+
 ## Purpose
 
 Solve a complex question by first breaking it into a sequence of easier

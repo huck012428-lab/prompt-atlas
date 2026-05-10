@@ -20,6 +20,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want to audit whether a citation actually supports the claim it was attached to.
+**Fill in:** `{{claim}}` = an atomic claim from the AI answer; `{{cited_span}}` = the verbatim source text the answer cited.
+**You'll get:** A fully/partially/not-supported verdict, the supporting phrase, and what's missing. Output is JSON.
+
 ## Purpose
 
 For a single (claim, cited_span) pair, decide whether the cited span

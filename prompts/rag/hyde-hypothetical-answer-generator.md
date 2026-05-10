@@ -17,6 +17,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want to generate a hypothetical answer to embed and use as a search vector (HyDE technique).
+**Fill in:** `{{query}}` = the user's original query.
+**You'll get:** A 2-4 sentence reference-style hypothetical answer. Output is plain text (not JSON), intended to be embedded — not shown to the user.
+
 ## Purpose
 
 Generate a short, plausible hypothetical answer to a query. The

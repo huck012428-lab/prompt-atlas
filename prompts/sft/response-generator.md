@@ -23,6 +23,12 @@ variables:
     required: false
 ---
 
+## Quick Use
+
+**Use when:** You need to produce the response half of an SFT pair given an instruction.
+**Fill in:** `{{instruction}}` = what to respond to; `{{style_constraints}}` = optional style description; `{{domain_hint}}` = optional domain hint.
+**You'll get:** The response text plus a `would_refuse` safety flag and a self_assessment of quality / factual risk / length. Output is JSON containing the response_text field.
+
 ## Purpose
 
 Produce a high-quality response to a single instruction, intended as

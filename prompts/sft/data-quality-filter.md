@@ -23,6 +23,12 @@ variables:
     required: false
 ---
 
+## Quick Use
+
+**Use when:** You have candidate (instruction, response) SFT pairs and want to filter them by quality before training.
+**Fill in:** `{{instruction}}` = the instruction; `{{response}}` = the candidate response; `{{domain_hint}}` = optional one-line domain hint.
+**You'll get:** Per-dimension scores (clarity, correctness, completeness, style, safety) and a keep / review / drop verdict. Output is JSON.
+
 ## Purpose
 
 Score a candidate (instruction, response) SFT pair on five quality

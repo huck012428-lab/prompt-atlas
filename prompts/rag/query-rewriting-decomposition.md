@@ -20,6 +20,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want to split a single complex query into focused sub-queries before retrieval.
+**Fill in:** `{{original_query}}` = the user's raw query; `{{max_subqueries}}` = a small number, typically 3 to 5.
+**You'll get:** A list of self-contained sub-queries each with the facet they target, plus a short reasoning summary. Output is JSON.
+
 ## Purpose
 
 Rewrite a single user query into a small set of focused sub-queries that

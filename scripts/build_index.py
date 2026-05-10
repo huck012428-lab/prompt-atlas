@@ -52,9 +52,34 @@ def parse_card(path: Path) -> tuple[dict, str]:
 def extract_use_when(body: str) -> str:
     """Extract a one-line 'use when' summary from the card body.
 
-    Strategy: take the first sentence of the '## Purpose' section, with
-    a length cap so the INDEX table stays scannable.
+    Preferred source: the `**Use when:**` line in `## Quick Use`. That is
+    the beginner-facing one-liner authored deliberately for this purpose.
+    Fallback: first sentence of `## Purpose` (for legacy cards that may
+    pre-date the Quick Use convention).
     """
+    # Try Quick Use first
+    qu_marker = "\n## Quick Use\n"
+    qu_idx = body.find(qu_marker)
+    if qu_idx == -1 and body.startswith("## Quick Use\n"):
+        qu_idx = 0
+        qu_start = len("## Quick Use\n")
+    elif qu_idx != -1:
+        qu_start = qu_idx + len(qu_marker)
+    else:
+        qu_start = -1
+    if qu_start >= 0:
+        next_section = body.find("\n## ", qu_start)
+        quick_block = body[qu_start:next_section if next_section != -1 else None]
+        for line in quick_block.splitlines():
+            line = line.strip()
+            if line.lower().startswith("**use when:**"):
+                value = line[len("**use when:**"):].strip().rstrip(".")
+                if value:
+                    if len(value) > 180:
+                        value = value[:177].rstrip() + "..."
+                    return value
+
+    # Fallback: first sentence of Purpose
     marker = "\n## Purpose\n"
     idx = body.find(marker)
     if idx == -1 and body.startswith("## Purpose\n"):

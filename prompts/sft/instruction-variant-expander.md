@@ -20,6 +20,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want to rewrite ONE instruction into N variants that preserve the underlying task but vary surface form, register, or style.
+**Fill in:** `{{seed_instruction}}` = the original instruction; `{{n_variants}}` = how many rewrites to produce.
+**You'll get:** A list of variants, each with a `delta` describing what changed compared to the seed. Output is JSON.
+
 ## Purpose
 
 Take one seed instruction from a small high-quality SFT set and produce N

@@ -23,6 +23,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want to score a single AI output on YOUR custom dimensions (not a fixed rubric) with self-reported confidence.
+**Fill in:** `{{task_description}}` = what was asked; `{{model_output}}` = the response to score; `{{scoring_dimensions}}` = comma-separated names of dimensions you choose.
+**You'll get:** Per-dimension scores plus a high/medium/low confidence per dimension, a confidence-weighted overall_score, and a `trustworthy_aggregate` flag. Output is JSON.
+
 ## Purpose
 
 Produce a single-output, multi-dimensional quality score with explicit

@@ -20,6 +20,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You have a candidate image caption and want to audit which claims actually match the image.
+**Fill in:** `{{image}}` = the image to check (passed as a vision input); `{{candidate_description}}` = the text caption to verify.
+**You'll get:** Per-claim labels (supported / contradicted / unverifiable), a list of missing salient elements, and a hallucination rate. Output is JSON. Requires a vision-language model.
+
 ## Purpose
 
 Given an image and a candidate description, decide which claims in the

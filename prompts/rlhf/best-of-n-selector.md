@@ -20,6 +20,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You have N candidate responses to the same prompt and need to pick the best (for inference-time best-of-N or for RLHF preference data).
+**Fill in:** `{{user_prompt}}` = the original prompt; `{{candidates}}` = JSON array of N candidate response strings.
+**You'll get:** The best index, a full ranking with HHH scores per candidate, and an agreement signal showing how clear the choice is. Output is JSON.
+
 ## Purpose
 
 Given N candidate responses to the same prompt, rank them and pick the

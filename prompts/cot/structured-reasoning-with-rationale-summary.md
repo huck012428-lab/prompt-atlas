@@ -17,6 +17,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want the model to decompose its reasoning into named sub-steps and emit a summary rationale (not hidden chain-of-thought).
+**Fill in:** `{{question}}` = the question or task that needs reasoning.
+**You'll get:** Sub-steps each with a concrete result, a final answer, a short rationale_summary for the user, and a confidence level. Output is JSON.
+
 ## Purpose
 
 Force a model to decompose a problem into named sub-steps, produce a final

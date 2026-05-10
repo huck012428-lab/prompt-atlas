@@ -23,6 +23,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You're scoring closed-form outputs (short-answer QA, math, structured extraction) against a known gold answer.
+**Fill in:** `{{question}}` = the question; `{{gold_answer}}` = the reference correct answer; `{{model_output}}` = the AI's actual output.
+**You'll get:** Correctness / completeness / style scores plus a match / partial_match / mismatch verdict and a one-sentence delta. Output is JSON.
+
 ## Purpose
 
 Score a model output against a known-correct gold answer on three axes:

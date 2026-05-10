@@ -17,6 +17,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** <one short clause: what problem this card solves, in plain English>.
+**Fill in:** `{{var1}}` = <plain English description>; `{{var2}}` = <plain English description>.
+**You'll get:** <output described in plain English; mention "Output is JSON" or "Output is plain text" so non-technical users know what to expect>.
+
 ## Purpose
 
 One paragraph: when to use this card, what problem it solves, and the kind

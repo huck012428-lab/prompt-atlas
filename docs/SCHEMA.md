@@ -24,14 +24,21 @@ frontmatter followed by a markdown body with a fixed set of sections.
 
 ## Required body sections
 
-The body must contain these six level-2 headings, in this order:
+The body must contain these seven level-2 headings, in this order:
 
-1. `## Purpose`
-2. `## Prompt`
-3. `## Example`
-4. `## Failure Modes`
-5. `## Tuning Notes`
-6. `## Changelog`
+1. `## Quick Use`
+2. `## Purpose`
+3. `## Prompt`
+4. `## Example`
+5. `## Failure Modes`
+6. `## Tuning Notes`
+7. `## Changelog`
+
+`## Quick Use` is the beginner-facing summary at the top of every card — a
+one-sentence "use when", a plain-English description of what to fill into
+each variable, and a plain-English description of what the card returns.
+Aimed at users who only need the gist; the deeper sections below it are
+where the engineering experience lives.
 
 Variables in the prompt text use double-curly placeholders: `{{variable_name}}`.
 

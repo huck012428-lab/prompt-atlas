@@ -23,6 +23,12 @@ variables:
     required: false
 ---
 
+## Quick Use
+
+**Use when:** You want a structured quality assessment of a single AI output across factuality / instruction-following / coherence / completeness.
+**Fill in:** `{{task_description}}` = what the AI was asked to do; `{{model_output}}` = the AI's response; `{{reference_answer}}` = optional gold reference (pass empty string if none).
+**You'll get:** Per-dimension scores 1-5, a holistic verdict, a one-sentence basis, and concrete issues. Output is JSON.
+
 ## Purpose
 
 Score a single open-ended model output against a rubric covering factuality,

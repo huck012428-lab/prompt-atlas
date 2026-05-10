@@ -23,6 +23,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** Your agent has taken several steps and you want a meta-level "are we on track" check before continuing.
+**Fill in:** `{{original_goal}}` = the user's goal; `{{recent_actions}}` = JSON array of recent actions; `{{recent_observations}}` = matching tool results.
+**You'll get:** A continue / switch_strategy / escalate decision plus what worked, what failed, and (if drifting) a switch proposal. Output is JSON.
+
 ## Purpose
 
 Insert a structured reflection step into an agent loop after every N

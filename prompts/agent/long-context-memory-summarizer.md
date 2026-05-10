@@ -23,6 +23,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** Your agent's trajectory is approaching the context window limit and you need to compress earlier history into a structured memory record.
+**Fill in:** `{{trajectory_so_far}}` = JSON array of all actions and observations; `{{current_objective}}` = the current goal; `{{token_budget_for_summary}}` = target summary size, e.g. 500.
+**You'll get:** Structured memory with facts learned, decisions made, open questions, dead ends, and a non-binding next-action hint. Output is JSON.
+
 ## Purpose
 
 Compress a long agent trajectory into a structured memory record that

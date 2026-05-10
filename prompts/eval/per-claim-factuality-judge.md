@@ -20,6 +20,12 @@ variables:
     required: false
 ---
 
+## Quick Use
+
+**Use when:** You want fine-grained factuality labels (true / false / unverifiable) for every atomic factual claim in an AI output.
+**Fill in:** `{{model_output}}` = the AI output to fact-check; `{{domain_hint}}` = optional one-line domain description to calibrate strictness.
+**You'll get:** Per-claim labels, a factual_precision rate, and a one-sentence summary basis. Output is JSON.
+
 ## Purpose
 
 Decompose a model output into atomic factual claims and label each as

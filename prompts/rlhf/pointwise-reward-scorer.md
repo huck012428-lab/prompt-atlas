@@ -23,6 +23,12 @@ variables:
     required: false
 ---
 
+## Quick Use
+
+**Use when:** You only have a single response (no comparison pair) and need a scalar reward signal for reward model training data.
+**Fill in:** `{{user_prompt}}` = the prompt; `{{response}}` = the single response to score; `{{dimension_weights}}` = JSON weight object (or `{}` for equal weights).
+**You'll get:** Per-dimension scores, a 0-100 weighted reward, a confidence level, and a `training_usable` flag for filtering. Output is JSON.
+
 ## Purpose
 
 Produce a single scalar reward signal plus per-dimension breakdown for a

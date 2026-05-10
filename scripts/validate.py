@@ -53,6 +53,7 @@ REQUIRED_FRONTMATTER = [
 ]
 
 REQUIRED_SECTIONS = [
+    "## Quick Use",
     "## Purpose",
     "## Prompt",
     "## Example",

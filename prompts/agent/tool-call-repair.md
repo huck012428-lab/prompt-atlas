@@ -23,6 +23,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** A tool call failed schema validation and you want to repair it before escalating to a strategy reflection.
+**Fill in:** `{{tool_schema}}` = JSON schema for the tool's parameters; `{{attempted_call}}` = the malformed call object; `{{error_message}}` = the validator's error message.
+**You'll get:** A repaired call (or `repairable: false` if a required field cannot be inferred), plus a list of the changes made. Output is JSON.
+
 ## Purpose
 
 Take a malformed tool call (schema validation failure, type mismatch,

@@ -23,6 +23,12 @@ variables:
     required: false
 ---
 
+## Quick Use
+
+**Use when:** You've sampled N candidate answers to the same question (with temperature) and want to take a majority vote.
+**Fill in:** `{{question}}` = the original question; `{{candidate_paths}}` = JSON array of N (rationale_summary, final_answer) objects; `{{equivalence_hint}}` = optional definition of "equivalent" answers (e.g. numerical tolerance).
+**You'll get:** The consensus answer, vote counts per equivalence class, an agreement_rate, and a `trustworthy` flag. Output is JSON.
+
 ## Purpose
 
 Aggregate N independently-sampled reasoning paths for the same question

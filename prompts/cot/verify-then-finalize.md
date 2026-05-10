@@ -20,6 +20,12 @@ variables:
     required: false
 ---
 
+## Quick Use
+
+**Use when:** A task is error-prone (math, units, edge cases) and you want a draft + explicit verification before committing to the final answer.
+**Fill in:** `{{question}}` = the original question; `{{existing_draft}}` = optional draft to verify (pass empty string to have the model produce a draft first).
+**You'll get:** The draft, per-check verdicts (arithmetic, edge cases, contradictions, unsupported claims, constraints), an accept/correct/reject decision, and the verified final_answer. Output is JSON.
+
 ## Purpose
 
 Produce a final answer in two phases — draft, then verify — within a

@@ -20,6 +20,12 @@ variables:
     required: false
 ---
 
+## Quick Use
+
+**Use when:** You want a structured caption for an image — discrete fields like scene, subject, objects, action — instead of free-form text.
+**Fill in:** `{{image}}` = the image; `{{focus_hint}}` = optional one-line hint about what to emphasize (alt-text, product catalog, moderation, etc.).
+**You'll get:** Structured fields (scene_type, primary_subject, objects, salient text, uncertain elements) plus a one-paragraph caption_summary. Output is JSON. Requires a vision-language model.
+
 ## Purpose
 
 Produce a structured caption for an image — discrete fields for scene,

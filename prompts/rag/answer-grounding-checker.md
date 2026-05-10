@@ -23,6 +23,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want to detect hallucinations in a RAG answer by checking each claim against the retrieved context.
+**Fill in:** `{{question}}` = the user's question; `{{retrieved_context}}` = the full retrieved context the model had; `{{answer}}` = the model's answer to audit.
+**You'll get:** Per-claim labels (supported / unsupported / contradicted) and an overall hallucination rate. Output is JSON.
+
 ## Purpose
 
 Decompose a RAG answer into atomic claims and label each one as supported,

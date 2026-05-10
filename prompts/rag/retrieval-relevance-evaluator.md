@@ -20,6 +20,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want to score whether a retrieved passage is relevant to a search query.
+**Fill in:** `{{query}}` = the search query; `{{passage}}` = the retrieved text to score.
+**You'll get:** A 0/1/2 relevance score, a one-sentence reason, and the supporting phrase from the passage. Output is JSON.
+
 ## Purpose
 
 Score whether a single retrieved passage is relevant to a query, with a short

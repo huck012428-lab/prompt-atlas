@@ -23,6 +23,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You have two AI responses to the same prompt and want a preference label across helpful / harmless / honest dimensions.
+**Fill in:** `{{user_prompt}}` = the original prompt; `{{response_a}}` and `{{response_b}}` = the two candidate responses to compare.
+**You'll get:** Per-dimension scores for each response, a winner pick (a / b / tie), and a one-sentence basis. Output is JSON.
+
 ## Purpose
 
 Produce a pairwise preference label across the helpful / harmless / honest

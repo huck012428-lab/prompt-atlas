@@ -20,6 +20,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You want to generate a multi-hop QA evaluation question from two related passages.
+**Fill in:** `{{passage_a}}` = first source passage; `{{passage_b}}` = second source passage covering a related but different fact.
+**You'll get:** A question that requires both passages to answer, plus the gold answer and supporting spans from each. Output is JSON.
+
 ## Purpose
 
 Generate a multi-hop evaluation question that *requires* combining information

@@ -20,6 +20,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** Your agent's goal is predictable enough to plan upfront instead of step-by-step (linear dependencies, known sub-problems).
+**Fill in:** `{{user_goal}}` = the agent's goal; `{{tool_catalog}}` = JSON list of available tools.
+**You'll get:** A 2-7 step linear plan with explicit dependency edges and a final synthesis step. Output is JSON.
+
 ## Purpose
 
 Produce a complete multi-step plan upfront, before any tool calls,

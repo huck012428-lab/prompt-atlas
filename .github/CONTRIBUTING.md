@@ -33,9 +33,9 @@ in [`docs/SCHEMA.md`](../docs/SCHEMA.md). Specifically:
 1. **Frontmatter** — all required fields present, all enum values from the
    controlled vocabulary, `id` matches file path, `direction` matches
    parent folder.
-2. **Body sections** — six level-2 headings in this exact order:
-   `## Purpose`, `## Prompt`, `## Example`, `## Failure Modes`,
-   `## Tuning Notes`, `## Changelog`.
+2. **Body sections** — seven level-2 headings in this exact order:
+   `## Quick Use`, `## Purpose`, `## Prompt`, `## Example`,
+   `## Failure Modes`, `## Tuning Notes`, `## Changelog`.
 3. **Variables** — every `{{placeholder}}` in the prompt body matches a
    `name` in the `variables` frontmatter list.
 4. **Concrete examples** — `## Example` must show real input and real
@@ -46,6 +46,10 @@ in [`docs/SCHEMA.md`](../docs/SCHEMA.md). Specifically:
 Cards that pass validation but read as unfinished will be asked for
 revisions. The bar:
 
+- **Quick Use** is the beginner-facing summary at the top. Three lines:
+  "Use when:" (one short clause), "Fill in:" (variables in plain English),
+  "You'll get:" (output in plain English; say "Output is JSON" so
+  non-technical readers know what they're looking at). No jargon here.
 - **Purpose** names the workflow stage, not just "this prompt does X".
   Bad: "scores stuff". Good: "Used during RAG eval-set construction to
   produce per-passage relevance labels for offline retriever metrics."

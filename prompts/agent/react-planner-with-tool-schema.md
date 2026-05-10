@@ -23,6 +23,12 @@ variables:
     required: false
 ---
 
+## Quick Use
+
+**Use when:** You want an agent to emit one strict-JSON tool call per step in a ReAct loop, with a visible reasoning summary.
+**Fill in:** `{{user_goal}}` = what the agent is trying to do; `{{tool_catalog}}` = JSON list of available tools and their schemas; `{{scratchpad}}` = prior actions and observations (empty on the first turn).
+**You'll get:** One JSON object per step with a reasoning_summary plus either a tool_call or a final_answer. Output is JSON.
+
 ## Purpose
 
 Drive a ReAct-style agent loop where each step emits a single visible

@@ -23,6 +23,12 @@ variables:
     required: true
 ---
 
+## Quick Use
+
+**Use when:** You have a small bank of seed instructions and want to generate NEW instructions in the same task family (Self-Instruct technique).
+**Fill in:** `{{seed_instructions}}` = JSON array of 5-10 seed examples; `{{task_family_description}}` = optional one-line description; `{{n_new_instructions}}` = how many new ones to generate.
+**You'll get:** A list of new instructions each with task-family fit, diversity axes, and a novelty check. Output is JSON.
+
 ## Purpose
 
 Generate new, diverse instructions in the same task family as a small

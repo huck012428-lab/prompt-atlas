@@ -61,15 +61,19 @@ Then re-run validate and build_index.
 
 Start from `templates/prompt-card.md`. Required body sections, in order:
 
-1. `## Purpose`
-2. `## Prompt`
-3. `## Example`
-4. `## Failure Modes`
-5. `## Tuning Notes`
-6. `## Changelog`
+1. `## Quick Use`
+2. `## Purpose`
+3. `## Prompt`
+4. `## Example`
+5. `## Failure Modes`
+6. `## Tuning Notes`
+7. `## Changelog`
 
 Quality bar:
 
+- Quick Use is for non-technical readers. Three lines:
+  "Use when:" / "Fill in:" / "You'll get:". No jargon, no engineering
+  caveats — those go in Failure Modes and Tuning Notes.
 - Purpose names the workflow stage (not just "this prompt does X").
 - Prompt body uses `{{variable}}` placeholders that match the
   `variables` frontmatter block.

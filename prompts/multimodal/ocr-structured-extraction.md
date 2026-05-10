@@ -23,6 +23,12 @@ variables:
     required: false
 ---
 
+## Quick Use
+
+**Use when:** You want to extract a fixed set of typed fields from a document image (receipt, invoice, form, ID page).
+**Fill in:** `{{image}}` = the document image; `{{target_fields}}` = JSON array describing the fields to extract (name, type, required, description); `{{document_type_hint}}` = optional locale or document-type hint.
+**You'll get:** Each field with its typed value, per-field confidence, and notes; plus a `trustworthy_for_automation` flag. Output is JSON. Requires a vision-language model.
+
 ## Purpose
 
 Extract a fixed set of named fields from a document image, returning
