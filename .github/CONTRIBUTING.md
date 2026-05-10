@@ -28,7 +28,7 @@ validation will not be merged.
 ## Card requirements
 
 Every file under `prompts/<direction>/<slug>.md` must conform to the schema
-in [`docs/SCHEMA.md`](docs/SCHEMA.md). Specifically:
+in [`docs/SCHEMA.md`](../docs/SCHEMA.md). Specifically:
 
 1. **Frontmatter** — all required fields present, all enum values from the
    controlled vocabulary, `id` matches file path, `direction` matches
@@ -62,10 +62,10 @@ revisions. The bar:
 
 If your card needs a tag / audience / model label that does not exist:
 
-1. Add it to [`scripts/vocab.yml`](scripts/vocab.yml) (canonical source —
+1. Add it to [`scripts/vocab.yml`](../scripts/vocab.yml) (canonical source —
    `validate.py` reads this directly).
 2. Add the same value to the prose listing in
-   [`docs/SCHEMA.md`](docs/SCHEMA.md) so humans browsing the docs see it.
+   [`docs/SCHEMA.md`](../docs/SCHEMA.md) so humans browsing the docs see it.
 3. In your PR description, justify the addition: which existing label did
    you consider and why didn't it fit?
 
@@ -77,7 +77,7 @@ catch.
 
 ## What we will NOT accept
 
-See [`docs/SAFETY.md`](docs/SAFETY.md) for the full list. Highlights:
+See [`docs/SAFETY.md`](../docs/SAFETY.md) for the full list. Highlights:
 
 - Jailbreaks, safety-bypass prompts, refusal-suppression templates —
   including under "research" framing.
@@ -99,7 +99,7 @@ rubrics, harmfulness judges) — those are explicitly welcome.
 
 ## Reporting safety issues post-merge
 
-If you find a card that violates [`docs/SAFETY.md`](docs/SAFETY.md) after
+If you find a card that violates [`docs/SAFETY.md`](../docs/SAFETY.md) after
 it has been merged, open a GitHub issue using the **Bug Report** template
 and add the `safety` label. Maintainers will triage in the next merge
 cycle.
@@ -123,7 +123,7 @@ See [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
 ## License acknowledgement
 
 By contributing, you agree your contribution is licensed under the
-applicable part of [`LICENSE`](LICENSE):
+applicable part of [`LICENSE`](../LICENSE):
 
 - Code (`scripts/`, CI): MIT
 - Prompt content (`prompts/`, `templates/`, `docs/`): CC-BY-4.0

@@ -135,9 +135,9 @@ factuality judges) are explicitly welcome.
 
 ## Contributing / 贡献流程
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md). Short version:
+See [`CONTRIBUTING.md`](.github/CONTRIBUTING.md). Short version:
 
-详见 [`CONTRIBUTING.md`](CONTRIBUTING.md)。简要流程：
+详见 [`CONTRIBUTING.md`](.github/CONTRIBUTING.md)。简要流程：
 
 1. Copy [`templates/prompt-card.md`](templates/prompt-card.md) into
    `prompts/<direction>/<your-slug>.md`.
@@ -174,9 +174,9 @@ clarity.
 ## Status / 当前状态
 
 **v0.1.0** — first public release. 32 Prompt Cards across all 7
-directions. See [`CHANGELOG.md`](CHANGELOG.md) for details and
-[`ROADMAP.md`](ROADMAP.md) for what's next. Pull requests welcome.
+directions. See [`CHANGELOG.md`](docs/CHANGELOG.md) for details and
+[`ROADMAP.md`](docs/ROADMAP.md) for what's next. Pull requests welcome.
 
 **v0.1.0** —— 首个公开版本。32 张 Prompt Card，覆盖全部 7 个方向。
-变更详见 [`CHANGELOG.md`](CHANGELOG.md)，后续计划见
-[`ROADMAP.md`](ROADMAP.md)，欢迎 PR。
+变更详见 [`CHANGELOG.md`](docs/CHANGELOG.md)，后续计划见
+[`ROADMAP.md`](docs/ROADMAP.md)，欢迎 PR。
